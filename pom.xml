@@ -114,6 +114,14 @@
         </extensions>
     </build>
     <repositories>
+    <repository>
+<snapshots>
+<enabled>false</enabled>
+</snapshots>
+<id>central</id>
+<name>bintray</name>
+<url>http://dl.bintray.com/rokom14/maven</url>
+</repository>
         <repository>
             <id>bukkit-repo</id>
             <url>http://repo.bukkit.org/content/groups/public/</url>
@@ -131,9 +139,8 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>LATEST</version>
-            <type>jar</type>
-            <scope>provided</scope>
+            <version>1.7.10-R0.1</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -150,7 +157,7 @@
             <groupId>net.snaq</groupId>
             <artifactId>dbpool</artifactId>
             <version>5.1</version>
-        </dependency>
+        </dependency>  
     </dependencies>
     <distributionManagement>
         <repository>

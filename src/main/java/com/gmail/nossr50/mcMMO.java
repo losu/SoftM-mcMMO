@@ -66,6 +66,12 @@ import com.gmail.nossr50.util.upgrade.UpgradeManager;
 import net.shatteredlands.shatt.backup.ZipLibrary;
 
 public class mcMMO extends JavaPlugin {
+	
+	public static void main(String[] args)
+	{
+		
+	}
+	
     /* Managers */
     private static ChunkManager       placeStore;
     private static RepairableManager  repairableManager;
