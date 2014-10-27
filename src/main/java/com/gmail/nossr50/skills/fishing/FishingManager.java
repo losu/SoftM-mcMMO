@@ -228,6 +228,21 @@ public class FishingManager extends SkillManager {
         return 0;
     }
 
+  public int checkSkillTier(){
+	  int skillLevel = getSkillLevel();
+
+      for (Tier tier : Tier.values()) {
+          if (skillLevel >= tier.getLevel() && skillLevel >= 2) {
+              return tier.toNumerical();
+          }
+  }
+	return 0;
+  }
+	
+    	
+    	
+    
+    
     /**
      * Gets the Shake Mob probability
      *
@@ -305,7 +320,7 @@ public class FishingManager extends SkillManager {
         Player player = getPlayer();
         FishingTreasure treasure = null;
 
-        if (Config.getInstance().getFishingDropsEnabled() && Permissions.secondaryAbilityEnabled(player, SecondaryAbility.FISHING_TREASURE_HUNTER)) {
+        if (Config.getInstance().getFishingDropsEnabled() && Permissions.secondaryAbilityEnabled(player, SecondaryAbility.FISHING_TREASURE_HUNTER) && checkSkillTier() >2) {
             treasure = getFishingTreasure();
             this.fishingCatch = null;
         }
@@ -450,9 +465,9 @@ public class FishingManager extends SkillManager {
     private FishingTreasure getFishingTreasure() {
         double diceRoll = Misc.getRandom().nextDouble() * 100;
         diceRoll -= getPlayer().getItemInHand().getEnchantmentLevel(Enchantment.LUCK);
-
+      
         FishingTreasure treasure = null;
-
+       
         for (Rarity rarity : Rarity.values()) {
             double dropRate = TreasureConfig.getInstance().getItemDropRate(getLootTier(), rarity);
 
@@ -474,6 +489,8 @@ public class FishingManager extends SkillManager {
 
             diceRoll -= dropRate;
         }
+        
+        
 
         if (treasure == null) {
             return null;
