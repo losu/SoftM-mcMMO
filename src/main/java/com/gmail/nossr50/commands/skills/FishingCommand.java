@@ -31,6 +31,7 @@ public class FishingCommand extends SkillCommand {
     private String uncommonTreasure;
     private String rareTreasure;
     private String epicTreasure;
+    private String mythcialTrasure;  // Adama change 1
     private String legendaryTreasure;
     private String recordTreasure;
 
@@ -61,6 +62,7 @@ public class FishingCommand extends SkillCommand {
             uncommonTreasure = percent.format(TreasureConfig.getInstance().getItemDropRate(lootTier, Rarity.UNCOMMON) / 100.0);
             rareTreasure = percent.format(TreasureConfig.getInstance().getItemDropRate(lootTier, Rarity.RARE) / 100.0);
             epicTreasure = percent.format(TreasureConfig.getInstance().getItemDropRate(lootTier, Rarity.EPIC) / 100.0);
+            mythcialTrasure = percent.format(TreasureConfig.getInstance().getItemDropRate(lootTier, Rarity.MYTHCIAL) / 100.0); //ADAMA change 1 (why / 100)
             legendaryTreasure = percent.format(TreasureConfig.getInstance().getItemDropRate(lootTier, Rarity.LEGENDARY) / 100.0);
             recordTreasure = percent.format(TreasureConfig.getInstance().getItemDropRate(lootTier, Rarity.RECORD) / 100.0);
 
@@ -156,7 +158,8 @@ public class FishingCommand extends SkillCommand {
 
         if (canTreasureHunt) {
             messages.add(LocaleLoader.getString("Fishing.Ability.Rank", lootTier, Tier.values().length));
-            messages.add(LocaleLoader.getString("Fishing.Ability.TH.DropRate", trapTreasure, commonTreasure, uncommonTreasure, rareTreasure, epicTreasure, legendaryTreasure, recordTreasure));
+            messages.add(LocaleLoader.getString("Fishing.Ability.TH.DropRate", trapTreasure, commonTreasure, uncommonTreasure, rareTreasure, epicTreasure, mythcialTrasure , legendaryTreasure, recordTreasure)); 
+            //Adama change 1
         }
 
         if (canMagicHunt) {
