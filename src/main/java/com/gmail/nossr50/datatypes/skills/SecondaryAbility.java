@@ -60,6 +60,7 @@ public enum SecondaryAbility {
     /* Swords */
     BLEED,
     COUNTER,
+    
 
     /* Taming */
     BEAST_LORE,
