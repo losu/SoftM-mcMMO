@@ -60,6 +60,8 @@ public class SwordsManager extends SkillManager {
         }
 
         Player player = getPlayer();
+        
+        player.sendMessage("hey");
 
         player.sendMessage(LocaleLoader.getString("Swords.Combat.CriticalHit"));
 
