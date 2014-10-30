@@ -330,6 +330,11 @@ public class InventoryListener implements Listener {
         if (result.getType().equals(Material.FLINT_AND_STEEL) && playerLevel < 15) {
         	String message = "You cannot craft this item until you reach level 15";
         	p.sendMessage(message);
+        	p.closeInventory();
+        	message = "nanay";
+        	p.sendMessage(message);
+        	result.setAmount(0);
+        	return;
         }
         else {
 	        if (!ItemUtils.isMcMMOItem(result)) {
