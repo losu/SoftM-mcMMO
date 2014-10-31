@@ -40,16 +40,19 @@ public class Taming {
 
     public static double processThickFur(Wolf wolf, double damage) {
         wolf.playEffect(EntityEffect.WOLF_SHAKE);
+        wolf.setAngry(true);
         return damage / thickFurModifier;
     }
 
     public static void processThickFurFire(Wolf wolf) {
         wolf.playEffect(EntityEffect.WOLF_SMOKE);
         wolf.setFireTicks(0);
+        wolf.setAngry(true);
     }
 
     public static double processShockProof(Wolf wolf, double damage) {
         wolf.playEffect(EntityEffect.WOLF_SHAKE);
+        wolf.setAngry(true);
         return damage / shockProofModifier;
     }
 
@@ -58,6 +61,7 @@ public class Taming {
 
         wolf.setHealth(modifiedHealth);
         wolf.playEffect(EntityEffect.WOLF_HEARTS);
+        wolf.setAngry(true);
     }
 
     protected static String getCallOfTheWildFailureMessage(EntityType type) {
