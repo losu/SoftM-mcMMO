@@ -42,6 +42,7 @@ public class Taming {
         wolf.playEffect(EntityEffect.WOLF_SHAKE);
         wolf.setAngry(true);
         return damage / thickFurModifier;
+        
     }
 
     public static void processThickFurFire(Wolf wolf) {
