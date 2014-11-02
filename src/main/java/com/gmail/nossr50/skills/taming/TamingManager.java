@@ -73,11 +73,9 @@ public class TamingManager extends SkillManager {
             case HORSE:
                 applyXpGain(Taming.horseXp, XPGainReason.PVE);
                 return;
-
             case WOLF:
                 applyXpGain(Taming.wolfXp, XPGainReason.PVE);
                 return;
-
             case OCELOT:
                 applyXpGain(Taming.ocelotXp, XPGainReason.PVE);
                 return;
@@ -107,6 +105,8 @@ public class TamingManager extends SkillManager {
         }
     }
 
+    
+    
     /**
      * Apply the Gore ability.
      *
