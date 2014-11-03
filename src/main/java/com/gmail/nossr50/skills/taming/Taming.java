@@ -1,6 +1,10 @@
 package com.gmail.nossr50.skills.taming;
 
+import javax.tools.DocumentationTool.Location;
+
 import org.bukkit.EntityEffect;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.AnimalTamer;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -33,6 +37,7 @@ public class Taming {
     public static int wolfXp   = ExperienceConfig.getInstance().getTamingXPWolf();
     public static int ocelotXp = ExperienceConfig.getInstance().getTamingXPOcelot();
     public static int horseXp  = ExperienceConfig.getInstance().getTamingXPHorse();
+    
 
     public static boolean canPreventDamage(Tameable pet, AnimalTamer owner) {
         return pet.isTamed() && owner instanceof Player && pet instanceof Wolf;
@@ -45,15 +50,18 @@ public class Taming {
         
     }
 
+
     public static void processThickFurFire(Wolf wolf) {
         wolf.playEffect(EntityEffect.WOLF_SMOKE);
         wolf.setFireTicks(0);
         wolf.setAngry(true);
+        
     }
 
     public static double processShockProof(Wolf wolf, double damage) {
         wolf.playEffect(EntityEffect.WOLF_SHAKE);
         wolf.setAngry(true);
+
         return damage / shockProofModifier;
     }
 

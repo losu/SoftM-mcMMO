@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.AnimalTamer;
 import org.bukkit.entity.Animals;
 import org.bukkit.entity.Arrow;
@@ -47,7 +49,6 @@ import com.gmail.nossr50.util.Misc;
 import com.gmail.nossr50.util.MobHealthbarUtils;
 import com.gmail.nossr50.util.Permissions;
 import com.gmail.nossr50.util.player.UserManager;
-
 import com.google.common.collect.ImmutableMap;
 
 public final class CombatUtils {
@@ -159,6 +160,16 @@ public final class CombatUtils {
         startGainXp(mcMMOPlayer, target, SkillType.TAMING);
     }
 
+    public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args){
+        if (commandLabel.equalsIgnoreCase("wolf")){
+            Player player = (Player) sender;
+            org.bukkit.Location location = player.getLocation();
+            Wolf wolf = (Wolf) player.getWorld().spawnEntity(location, EntityType.WOLF);
+            wolf.setAngry(true);
+            wolf.setTarget(player);
+        }
+        return false;
+    }
     private static void processArcheryCombat(LivingEntity target, Player player, EntityDamageByEntityEvent event, Arrow arrow) {
         double initialDamage = event.getDamage();
         double finalDamage = initialDamage;

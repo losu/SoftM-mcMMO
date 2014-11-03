@@ -1,0 +1,11 @@
+<project default="copy-resources">
+  <target name="init"/>
+  <target name="copy-resources" depends="init">
+    <copy todir="target/classes/com/gmail/nossr50/locale" filtering="true">
+      <fileset dir="src/main/resources/locale" includes="locale*.properties" excludes="**/*.java"/>
+    </copy>
+    <copy todir="target/classes/mods" filtering="true">
+      <fileset dir="src/main/resources/mods" includes="*.yml" excludes="**/*.java"/>
+    </copy>
+  </target>
+</project>
