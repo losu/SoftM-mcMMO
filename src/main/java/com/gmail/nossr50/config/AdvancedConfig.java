@@ -525,6 +525,14 @@ public class AdvancedConfig extends AutoUpdateConfigLoader {
         if (getBleedBaseTicks() < 1) {
             reason.add("Skills.Swords.Bleed.BaseTicks should be at least 1!");
         }
+        //4th change of the 1st change request
+        if (getCriticalHitPVPModifier() < 1) {
+            reason.add("Skills.Swords.CriticalHit.PVP_Modifier should be at least 1!");
+        }
+
+        if (getCriticalHitPVEModifier() < 1) {
+            reason.add("Skills.Swords.CriticalHit.PVE_Modifier should be at least 1!");
+        }
 
         if (getMaxChance(SecondaryAbility.COUNTER) < 1) {
             reason.add("Skills.Swords.Counter.ChanceMax should be at least 1!");

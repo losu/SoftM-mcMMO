@@ -313,6 +313,12 @@ public class PlayerListener implements Listener {
         Item drop = event.getItem();
         ItemStack dropStack = drop.getItemStack();
 
+        if (dropStack.getType().equals(Material.FLINT_AND_STEEL) && player.getLevel() < 15) {
+        	player.sendMessage("Do not do that, fool!");
+        	player.getInventory().removeItem(dropStack);
+        	player.closeInventory();
+        	return;
+        }
         if (drop.hasMetadata(mcMMO.disarmedItemKey)) {
             if (!player.getName().equals(drop.getMetadata(mcMMO.disarmedItemKey).get(0).asString())) {
                 event.setCancelled(true);

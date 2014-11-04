@@ -3,6 +3,7 @@ package com.gmail.nossr50.datatypes.treasure;
 public enum Rarity {
     RECORD,
     LEGENDARY,
+    MYTHCIAL, // Adama change 1
     EPIC,
     RARE,
     UNCOMMON,

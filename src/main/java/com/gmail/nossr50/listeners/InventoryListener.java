@@ -319,17 +319,30 @@ public class InventoryListener implements Listener {
     public void onCraftItem(CraftItemEvent event) {
         final HumanEntity whoClicked = event.getWhoClicked();
 
+        Player p = (Player) whoClicked;
+        int playerLevel = p.getLevel();
         if (!whoClicked.hasMetadata(mcMMO.playerDataKey)) {
             return;
         }
 
         ItemStack result = event.getRecipe().getResult();
 
-        if (!ItemUtils.isMcMMOItem(result)) {
-            return;
+        if (result.getType().equals(Material.FLINT_AND_STEEL) && playerLevel < 15) {
+        	String message = "You cannot craft this item until you reach level 15";
+        	p.sendMessage(message);
+        	p.closeInventory();
+        	message = "nanay";
+        	p.sendMessage(message);
+        	result.setAmount(0);
+        	return;
         }
-
-        new PlayerUpdateInventoryTask((Player) whoClicked).runTaskLater(plugin, 0);
+        else {
+	        if (!ItemUtils.isMcMMOItem(result)) {
+	            return;
+	        }
+	
+	        new PlayerUpdateInventoryTask((Player) whoClicked).runTaskLater(plugin, 0);
+        }
     }
 
     private Block processInventoryOpenOrCloseEvent(Inventory inventory) {

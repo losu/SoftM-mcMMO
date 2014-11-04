@@ -16,6 +16,7 @@ import com.gmail.nossr50.datatypes.skills.ToolType;
 import com.gmail.nossr50.locale.LocaleLoader;
 import com.gmail.nossr50.runnables.skills.BleedTimerTask;
 import com.gmail.nossr50.skills.SkillManager;
+import com.gmail.nossr50.skills.axes.Axes;
 import com.gmail.nossr50.util.Permissions;
 import com.gmail.nossr50.util.player.UserManager;
 import com.gmail.nossr50.util.skills.CombatUtils;
@@ -41,12 +42,39 @@ public class SwordsManager extends SkillManager {
     public boolean canUseSerratedStrike() {
         return mcMMOPlayer.getAbilityMode(AbilityType.SERRATED_STRIKES) && Permissions.serratedStrikes(getPlayer());
     }
+    //1st change of the 1st change request
+    public boolean canCriticalHit(LivingEntity target) {
+        return target.isValid() && Permissions.secondaryAbilityEnabled(getPlayer(), SecondaryAbility.CRITICAL_HIT);
+    }
 
     /**
      * Check for Bleed effect.
      *
      * @param target The defending entity
      */
+    
+    //2nd change of the 1st change request
+    public double criticalHit(LivingEntity target, double damage) {
+        if (!SkillUtils.activationSuccessful(SecondaryAbility.CRITICAL_HIT, getPlayer(), getSkillLevel(), activationChance)) {
+            return 0;
+        }
+
+        Player player = getPlayer();
+        
+
+        player.sendMessage(LocaleLoader.getString("Swords.Combat.CriticalHit"));
+
+        if (target instanceof Player) {
+            ((Player) target).sendMessage(LocaleLoader.getString("Swords.Combat.CritStruck"));
+
+            damage = (damage * Swords.criticalHitPVPModifier) - damage;
+        }
+        else {
+            damage = (damage * Swords.criticalHitPVEModifier) - damage;
+        }
+
+        return damage;
+    }
     public void bleedCheck(LivingEntity target) {
         if (SkillUtils.activationSuccessful(SecondaryAbility.BLEED, getPlayer(), getSkillLevel(), activationChance)) {
 
@@ -102,5 +130,6 @@ public class SwordsManager extends SkillManager {
     public void serratedStrikes(LivingEntity target, double damage, Map<DamageModifier, Double> modifiers) {
         CombatUtils.applyAbilityAoE(getPlayer(), target, damage / Swords.serratedStrikesModifier, modifiers, skill);
         BleedTimerTask.add(target, Swords.serratedStrikesBleedTicks);
+        
     }
 }

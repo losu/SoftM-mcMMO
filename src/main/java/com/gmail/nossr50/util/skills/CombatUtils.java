@@ -58,6 +58,7 @@ public final class CombatUtils {
         McMMOPlayer mcMMOPlayer = UserManager.getPlayer(player);
         SwordsManager swordsManager = mcMMOPlayer.getSwordsManager();
         double initialDamage = event.getDamage();
+        double finalDamage = event.getDamage();
         Map<DamageModifier, Double> modifiers = getModifiers(event);
 
         if (swordsManager.canActivateAbility()) {
@@ -66,6 +67,10 @@ public final class CombatUtils {
 
         if (swordsManager.canUseBleed()) {
             swordsManager.bleedCheck(target);
+        }
+        //5th change of the 1st change request
+        if (swordsManager.canCriticalHit(target)) {
+        finalDamage += swordsManager.criticalHit(target, initialDamage);
         }
 
         if (swordsManager.canUseSerratedStrike()) {

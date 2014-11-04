@@ -71,7 +71,8 @@ public class RepairManager extends SkillManager {
             player.sendMessage(LocaleLoader.getString("mcMMO.NoPermission"));
             return;
         }
-
+     
+        
         int skillLevel = getSkillLevel();
         int minimumRepairableLevel = repairable.getMinimumLevel();
 
@@ -82,7 +83,15 @@ public class RepairManager extends SkillManager {
         }
 
         PlayerInventory inventory = player.getInventory();
-
+        boolean nugget = false;
+        
+        // Check if the nugget is in the inventory
+        if(inventory.contains(Material.GOLD_NUGGET)) {
+        	player.sendMessage("You have the gold nugget, thats 10% bonus on repair");
+        	nugget = true;
+        	
+        }
+        
         Material repairMaterial = repairable.getRepairMaterial();
         byte repairMaterialMetadata = repairable.getRepairMaterialMetadata();
         ItemStack toRemove = new MaterialData(repairMaterial, repairMaterialMetadata).toItemStack(1);
@@ -119,7 +128,13 @@ public class RepairManager extends SkillManager {
 
         // Lets get down to business,
         // To defeat, the huns.
-        int baseRepairAmount = repairable.getBaseRepairDurability(); // Did they send me daughters?
+        int bonus = 0;
+        // If we got nugget we calculate the bonus, else bonus is 0
+        if(nugget) {
+            bonus = repairable.getBaseRepairDurability() / 10;	
+            player.sendMessage("Pre bonus: " + repairable.getBaseRepairDurability() +", Bonus: "+ bonus + ", After bonus: " + (repairable.getBaseRepairDurability() + bonus));
+        }
+        int baseRepairAmount = repairable.getBaseRepairDurability() + bonus; // Did they send me daughters?
         short newDurability = repairCalculate(startDurability, baseRepairAmount); // When I asked for sons?
 
         // Call event
