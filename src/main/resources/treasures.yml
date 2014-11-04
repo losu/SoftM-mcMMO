@@ -166,19 +166,19 @@ Fishing:
     DIAMOND_SWORD:
         Amount: 1
         XP: 200
-        Rarity: LEGENDARY
+        Rarity: MYTHCIAL
     DIAMOND_SPADE:
         Amount: 1
         XP: 200
-        Rarity: LEGENDARY
+        Rarity: MYTHCIAL
     DIAMOND_PICKAXE:
         Amount: 1
         XP: 200
-        Rarity: LEGENDARY
+        Rarity: MYTHCIAL
     DIAMOND_AXE:
         Amount: 1
         XP: 200
-        Rarity: LEGENDARY
+        Rarity: MYTHCIAL
     DIAMOND_HOE:
         Amount: 1
         XP: 200
@@ -249,6 +249,7 @@ Item_Drop_Rates:
         UNCOMMON: 1.25
         RARE: 0.25
         EPIC: 0.10
+        MYTHCIAL: 0.5
         LEGENDARY: 0.01
         RECORD: 0.01
     Tier_2:
@@ -257,6 +258,7 @@ Item_Drop_Rates:
         UNCOMMON: 1.75
         RARE: 0.75
         EPIC: 0.50
+        MYTHCIAL: 0.25
         LEGENDARY: 0.05
         RECORD: 0.01
     Tier_3:
@@ -265,6 +267,7 @@ Item_Drop_Rates:
         UNCOMMON: 2.75
         RARE: 1.25
         EPIC: 1.00
+        MYTHCIAL: 0.5
         LEGENDARY: 0.10
         RECORD: 0.01
     Tier_4:
@@ -273,6 +276,7 @@ Item_Drop_Rates:
         UNCOMMON: 3.50
         RARE: 2.25
         EPIC: 1.50
+        MYTHCIAL: 0.75
         LEGENDARY: 1.00
         RECORD: 0.01
     Tier_5:
@@ -281,6 +285,7 @@ Item_Drop_Rates:
         UNCOMMON: 3.75
         RARE: 2.50
         EPIC: 2.00
+        MYTHCIAL: 1.25
         LEGENDARY: 1.00
         RECORD: 0.01
     Tier_6:
@@ -289,6 +294,7 @@ Item_Drop_Rates:
         UNCOMMON: 3.25
         RARE: 3.75
         EPIC: 2.50
+        MYTHCIAL: 1.25
         LEGENDARY: 1.50
         RECORD: 0.05
     Tier_7:
@@ -297,6 +303,7 @@ Item_Drop_Rates:
         UNCOMMON: 2.75
         RARE: 4.00
         EPIC: 5.00
+        MYTHCIAL: 1.5
         LEGENDARY: 2.50
         RECORD: 0.10
     Tier_8:
@@ -305,6 +312,7 @@ Item_Drop_Rates:
         UNCOMMON: 1.50
         RARE: 6.00
         EPIC: 7.50
+        MYTHCIAL: 3.75
         LEGENDARY: 5.00
         RECORD: 0.25
 #
@@ -394,48 +402,56 @@ Enchantment_Drop_Rates:
         UNCOMMON: 1.00
         RARE: 0.10
         EPIC: 0.01
+        MYTHCIAL: 0.05
         LEGENDARY: 0.01
     Tier_2:
         COMMON: 7.50
         UNCOMMON: 1.00
         RARE: 0.10
         EPIC: 0.01
+        MYTHCIAL: 0.01  
         LEGENDARY: 0.01
     Tier_3:
         COMMON: 7.50
         UNCOMMON: 2.50
         RARE: 0.25
         EPIC: 0.10
+        MYTHCIAL: 0.05
         LEGENDARY: 0.01
     Tier_4:
         COMMON: 10.0
         UNCOMMON: 2.75
         RARE: 0.50
         EPIC: 0.10
+        MYTHCIAL: 0.7
         LEGENDARY: 0.05
     Tier_5:
         COMMON: 10.0
         UNCOMMON: 4.00
         RARE: 0.75
         EPIC: 0.25
+        MYTHCIAL: 0.15
         LEGENDARY: 0.10
     Tier_6:
         COMMON: 9.50
         UNCOMMON: 5.50
         RARE: 1.75
         EPIC: 0.50
+        MYTHCIAL: 0.35
         LEGENDARY: 0.25
     Tier_7:
         COMMON: 8.50
         UNCOMMON: 7.50
         RARE: 2.75
         EPIC: 0.75
+        MYTHCIAL: .60
         LEGENDARY: 0.50
     Tier_8:
         COMMON: 7.50
         UNCOMMON: 10.0
         RARE: 5.25
         EPIC: 1.50
+        MYTHCIAL: 1
         LEGENDARY: 0.75
 #
 #  Settings for Excavation
