@@ -47,6 +47,7 @@ import com.gmail.nossr50.datatypes.treasure.EnchantmentTreasure;
 import com.gmail.nossr50.datatypes.treasure.FishingTreasure;
 import com.gmail.nossr50.datatypes.treasure.Rarity;
 import com.gmail.nossr50.datatypes.treasure.ShakeTreasure;
+import com.gmail.nossr50.events.skills.McMMOPlayerSkillEvent;
 import com.gmail.nossr50.events.skills.fishing.McMMOPlayerFishingTreasureEvent;
 import com.gmail.nossr50.events.skills.fishing.McMMOPlayerShakeEvent;
 import com.gmail.nossr50.events.skills.secondaryabilities.SecondaryAbilityWeightedActivationCheckEvent;
@@ -59,6 +60,7 @@ import com.gmail.nossr50.util.EventUtils;
 import com.gmail.nossr50.util.ItemUtils;
 import com.gmail.nossr50.util.Misc;
 import com.gmail.nossr50.util.Permissions;
+import com.gmail.nossr50.util.player.UserManager;
 import com.gmail.nossr50.util.skills.CombatUtils;
 import com.gmail.nossr50.util.skills.SkillUtils;
 
@@ -349,12 +351,16 @@ public class FishingManager extends SkillManager {
 		int fishXp = ExperienceConfig.getInstance().getFishXp(
 				fishingCatch.getItemStack().getData());
 		int treasureXp = 0;
+		int checkSkillLevel = getSkillLevel(); // this will get the get players skill value from the skill manager!
 		Player player = getPlayer();
 		FishingTreasure treasure = null;
 
 		if (Config.getInstance().getFishingDropsEnabled()
 				&& Permissions.secondaryAbilityEnabled(player,
-						SecondaryAbility.FISHING_TREASURE_HUNTER)) {
+						SecondaryAbility.FISHING_TREASURE_HUNTER) && checkSkillLevel > 0) {// i added the check for skilllevel!
+			 //if skilllevel is 0 then they cant have treasure no matter if they catch the fish
+			
+	
 			treasure = getFishingTreasure();
 			this.fishingCatch = null;
 		}
@@ -520,16 +526,16 @@ public class FishingManager extends SkillManager {
 	 *         found.
 	 */
 	
-	public int checkSkillTier() {
-		int i = getSkillLevel();
-
-		for (Tier tier : Tier.values()) {
-			if (i >= tier.getLevel() && i >= 2) {
-				return tier.toNumerical();
-			}
-		}
-		return 0;
-	}
+//	public int checkSkillTier() {
+//		int i = getSkillLevel();
+//
+//		for (Tier tier : Tier.values()) {
+//			if (i >= tier.getLevel() && i >= 2) {
+//				return tier.toNumerical();
+//			}
+//		}
+//		return 0;
+//	}
 	
 	private FishingTreasure getFishingTreasure() {
 		double diceRoll = Misc.getRandom().nextDouble() * 100;
@@ -542,8 +548,8 @@ public class FishingManager extends SkillManager {
 			double dropRate = TreasureConfig.getInstance().getItemDropRate(
 					getLootTier(), rarity);
 
-			if (rarity.equals(7) || rarity.equals(6) || rarity.equals(5)
-					|| rarity.equals(4) && checkSkillTier() > 0) {
+//			if (rarity.equals(7) || rarity.equals(6) || rarity.equals(5)
+//					|| rarity.equals(4) && checkSkillTier() > 0) {
 
 				if (diceRoll <= dropRate) {
 					if (rarity == Rarity.TRAP) {
@@ -564,10 +570,8 @@ public class FishingManager extends SkillManager {
 				}
 
 				diceRoll -= dropRate;
-			}else{
-			return null;
 			}
-		}
+		
 
 		if (treasure == null) {
 			return null;
