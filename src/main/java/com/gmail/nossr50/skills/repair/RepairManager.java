@@ -144,13 +144,19 @@ public class RepairManager extends SkillManager {
 
         // Handle the enchants
         if (ArcaneForging.arcaneForgingEnchantLoss) {
-            addEnchants(item);
+            addEnchants(item, nugget);
         }
 
         // Remove the item
         if (repairMaterialMetadata == -1) {
             toRemove = inventory.getItem(inventory.first(repairMaterial)).clone();
             toRemove.setAmount(1);
+        }
+        inventory.removeItem(toRemove);
+        
+        if(nugget) {
+        	toRemove = inventory.getItem(inventory.first(Material.GOLD_NUGGET)).clone();
+        	toRemove.setAmount(1);
         }
 
         inventory.removeItem(toRemove);
@@ -290,7 +296,7 @@ public class RepairManager extends SkillManager {
      *
      * @param item Item being repaired
      */
-    private void addEnchants(ItemStack item) {
+    private void addEnchants(ItemStack item, boolean nugget) {
         Player player = getPlayer();
 
         Map<Enchantment, Integer> enchants = item.getEnchantments();
@@ -314,11 +320,18 @@ public class RepairManager extends SkillManager {
         }
 
         boolean downgraded = false;
-
+        
+        double bonus = 0.0;
+        if(nugget) {
+        	bonus = 10.0;
+        	player.sendMessage("You will recieve 10% bonus chance on keeping the enchant");
+        	player.sendMessage(bonus + " " + getKeepEnchantChance() + "  NEW bonus:  " + (bonus+getKeepEnchantChance()));
+        }
+        
         for (Entry<Enchantment, Integer> enchant : enchants.entrySet()) {
             Enchantment enchantment = enchant.getKey();
 
-            if (getKeepEnchantChance() > Misc.getRandom().nextInt(activationChance)) {
+            if ((getKeepEnchantChance() + bonus) > Misc.getRandom().nextInt(activationChance)) {
                 int enchantLevel = enchant.getValue();
 
                 if (ArcaneForging.arcaneForgingDowngrades && enchantLevel > 1 && (100 - getDowngradeEnchantChance()) <= Misc.getRandom().nextInt(activationChance)) {
