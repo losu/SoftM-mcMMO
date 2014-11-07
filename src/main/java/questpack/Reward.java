@@ -8,7 +8,6 @@ public class Reward {
 	private int exp;
 	
 	public Reward(Item item, int exp) {
-		super();
 		this.item = item;
 		this.exp = exp;
 	}
