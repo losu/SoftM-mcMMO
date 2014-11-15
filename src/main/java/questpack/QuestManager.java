@@ -20,52 +20,58 @@ public class QuestManager {
                
         }
  
-        public boolean checkNpcClicled(Entity npc) {
-                return true;
-        }
-       
-        public static void handleQuest(McMMOPlayer mcMMOPlayer, int questNumber) {
-             //  Quest[] questList = player.getq
-        	Player player = mcMMOPlayer.getPlayer();
-        	PlayerInventory playerInventory = player.getInventory();
-        	
-        	Quest[] questList = mcMMOPlayer.getQuestData();
-        	
-        	if(questList[questNumber].getQuestStatus()==2)
-        	{
-        		mcMMOPlayer.getPlayer().sendMessage("ALREADY COMPLITED ! ");
-        	}
-        	else if(questList[questNumber].getQuestStatus()==0)
-        	{
-        		mcMMOPlayer.getPlayer().sendMessage("AVAILABLE ! ");
-        	}
-        	else 
-        	{
-        		mcMMOPlayer.getPlayer().sendMessage("In progress ");
-        	}
-        	
-        }
-        
-//        public void checkIsQuestFinished (McMMOPlayer mcMMOPlayer, int questNumber){
+//        public static void checkIsQuestFinished (McMMOPlayer mcMMOPlayer, int questNumber){
 //        	Player player = mcMMOPlayer.getPlayer();
 //        	PlayerInventory playerInventory = player.getInventory();
 //        
 //        	Quest[] questList = mcMMOPlayer.getQuestData();
 //        	ItemStack itemStack = new ItemStack(questList[questNumber].getMaterial());
 //        	
-//        	if (playerInventory.containsAtLeast(itemStack, questList[questNumber].getAmountOfMaterial()))
+//        	
 //        	{
-//        		questList[questNumber].setCompleted(true);
+//        		
 //        		mcMMOPlayer.getPlayer().sendMessage("You finish the Quest ! "+ questList[questNumber].getName());
+//        		questList[questNumber].setStateOfTheQuest(2);
 //        		
 //        	}
 //        	else{
-//        		questList[questNumber].setCompleted(false);
+//        		
 //        		mcMMOPlayer.getPlayer().sendMessage("You have to collect more items ! ");
+//        		questList[questNumber].setStateOfTheQuest(1);
 //        		
 //        	}
-//        	
+////        	
 //        }
+        
+        public static void handleQuest(McMMOPlayer mcMMOPlayer, int questNumber) {
+             //  Quest[] questList = player.getq
+        	Player player = mcMMOPlayer.getPlayer();
+        	PlayerInventory playerInventory = player.getInventory();
+        	
+        	Quest[] questList = mcMMOPlayer.getQuestData();
+        	ItemStack itemStack = new ItemStack(questList[questNumber].getMaterial());
+        	
+        	//checkIsQuestFinished(mcMMOPlayer, questNumber);
+        	
+        	if(questList[questNumber].getQuestStatus()==2)
+        	{
+        		mcMMOPlayer.getPlayer().sendMessage("ALREADY COMPLITED ! ");
+        	}
+        	else if (questList[questNumber].getQuestStatus()==1)
+        	{
+        		if (!playerInventory.containsAtLeast(itemStack, questList[questNumber].getAmountOfMaterial()))
+        			mcMMOPlayer.getPlayer().sendMessage("In progress ! You have to collect more items !");	
+        	}
+        	
+        	else if(questList[questNumber].getQuestStatus()==0)
+        	{
+        		mcMMOPlayer.getPlayer().sendMessage("Description: "+ questList[questNumber].getDescription());
+        	}
+
+        	
+        }
+        
+     
         
     
         
