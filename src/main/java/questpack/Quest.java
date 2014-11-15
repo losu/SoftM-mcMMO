@@ -3,13 +3,17 @@ package questpack;
 import java.util.Dictionary;
 
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.PlayerInventory;
+
+import com.gmail.nossr50.datatypes.player.McMMOPlayer;
  
 public class Quest {
  
         private String name;
         private String description;
         private int amountOfMaterial;
-        private boolean completed;
+        private int questStatus; //0-available, 1-in progress, 2-finished
         private Reward reward;
         private Material material;
        
@@ -17,12 +21,12 @@ public class Quest {
        
 
 
-		public Quest(String name, String description, int amountOfMaterial, boolean completed,
+		public Quest(String name, String description, int amountOfMaterial, int stateOfTheQuest,
                         Reward reward, Material material) {
                 this.name = name;
                 this.description = description;
                 this.amountOfMaterial=amountOfMaterial;
-                this.completed = completed;
+                this.questStatus = stateOfTheQuest;
                 this.reward = reward;
                 this.material=material;
                 
@@ -46,15 +50,17 @@ public class Quest {
                 this.description = description;
         }
 
-		public boolean isCompleted() {
-                return completed;
-        }
+
        
-        public void setCompleted(boolean completed) {
-                this.completed = completed;
-        }
-       
-        public Reward getReward() {
+        public int getQuestStatus() {
+			return questStatus;
+		}
+
+		public void setStateOfTheQuest(int stateOfTheQuest) {
+			this.questStatus = stateOfTheQuest;
+		}
+
+		public Reward getReward() {
                 return reward;
         }
        
@@ -77,7 +83,8 @@ public class Quest {
 			this.amountOfMaterial = amountOfMaterial;
 		}
        
- 
+	    
+       
        
        
 }

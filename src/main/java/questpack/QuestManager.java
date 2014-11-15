@@ -13,9 +13,9 @@ public class QuestManager {
        
         public static Quest[] generateQuests() {
                 Quest[] questList = new Quest[10];
-                questList[0] = new Quest("Lumberjack", "Pick up 10 wood and turn it in",10, false, new Reward(Material.DIAMOND_AXE, 10),Material.WOOD);
-                questList[2] = new Quest("Bla bla bla", "Pick up 10 iron and turn it in",15, true, new Reward(Material.DIAMOND_AXE, 10),Material.SEEDS);
-                questList[5] = new Quest("Abecad", "Pick up 10 wood and turn it in",20, false, new Reward(Material.DIAMOND_AXE, 10),Material.SAND);
+                questList[0] = new Quest("Lumberjack", "Pick up 10 wood and turn it in",10, 0, new Reward(Material.DIAMOND_AXE, 10),Material.WOOD);
+                questList[2] = new Quest("Bla bla bla", "Pick up 10 iron and turn it in",15, 1, new Reward(Material.DIAMOND_AXE, 10),Material.SEEDS);
+                questList[5] = new Quest("Abecad", "Pick up 10 wood and turn it in",20, 2, new Reward(Material.DIAMOND_AXE, 10),Material.SAND);
                 return questList;
                
         }
@@ -31,34 +31,42 @@ public class QuestManager {
         	
         	Quest[] questList = mcMMOPlayer.getQuestData();
         	
-        	if(questList[questNumber].isCompleted())
+        	if(questList[questNumber].getQuestStatus()==2)
         	{
         		mcMMOPlayer.getPlayer().sendMessage("ALREADY COMPLITED ! ");
         	}
-        	else if(!questList[questNumber].isCompleted())
+        	else if(questList[questNumber].getQuestStatus()==0)
         	{
         		mcMMOPlayer.getPlayer().sendMessage("AVAILABLE ! ");
         	}
-        	
-        }
-        
-        public void checkIsQuestFinished (McMMOPlayer mcMMOPlayer, int questNumber){
-        	Player player = mcMMOPlayer.getPlayer();
-        	PlayerInventory playerInventory = player.getInventory();
-        
-        	Quest[] questList = mcMMOPlayer.getQuestData();
-        	ItemStack itemStack = new ItemStack(questList[questNumber].getMaterial());
-        	
-        	if (playerInventory.containsAtLeast(itemStack, questList[questNumber].getAmountOfMaterial()))
+        	else 
         	{
-        		questList[questNumber].setCompleted(true);
-        		mcMMOPlayer.getPlayer().sendMessage("You finish the Quest ! "+ questList[questNumber].getName());
-        	}
-        	else{
-        		questList[questNumber].setCompleted(false);
-        		mcMMOPlayer.getPlayer().sendMessage("You have to collect more items ! ");
+        		mcMMOPlayer.getPlayer().sendMessage("In progress ");
         	}
         	
-        	//return false;
         }
+        
+//        public void checkIsQuestFinished (McMMOPlayer mcMMOPlayer, int questNumber){
+//        	Player player = mcMMOPlayer.getPlayer();
+//        	PlayerInventory playerInventory = player.getInventory();
+//        
+//        	Quest[] questList = mcMMOPlayer.getQuestData();
+//        	ItemStack itemStack = new ItemStack(questList[questNumber].getMaterial());
+//        	
+//        	if (playerInventory.containsAtLeast(itemStack, questList[questNumber].getAmountOfMaterial()))
+//        	{
+//        		questList[questNumber].setCompleted(true);
+//        		mcMMOPlayer.getPlayer().sendMessage("You finish the Quest ! "+ questList[questNumber].getName());
+//        		
+//        	}
+//        	else{
+//        		questList[questNumber].setCompleted(false);
+//        		mcMMOPlayer.getPlayer().sendMessage("You have to collect more items ! ");
+//        		
+//        	}
+//        	
+//        }
+        
+    
+        
 }
