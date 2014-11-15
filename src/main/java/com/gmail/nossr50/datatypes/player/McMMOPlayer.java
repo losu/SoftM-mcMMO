@@ -873,4 +873,8 @@ public class McMMOPlayer {
     public FixedMetadataValue getPlayerMetadata() {
         return playerMetadata;
     }
+    
+    public Quest[] getQuestData() {
+    	return questList;
+    	}
 }
