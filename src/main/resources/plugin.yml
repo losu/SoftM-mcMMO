@@ -19,6 +19,8 @@ softdepend: [CombatTag, HealthBar]
 load: STARTUP
 
 commands:
+    quest:
+        description: Questing plugin
     xprate:
         aliases: [mcxprate]
         description: Modify the xp rate or start an event
@@ -714,6 +716,8 @@ permissions:
     mcmmo.commands.defaultsop:
         description: Implies all default op mcmmo.commands permissions.
         children:
+            mcmmo.commands.quest: true
+            mcmmo.commands.quest.others: true
             mcmmo.commands.addlevels: true
             mcmmo.commands.addlevels.others: true
             mcmmo.commands.addxp: true
@@ -830,6 +834,10 @@ permissions:
         description: Allows access to the mcgod command
     mcmmo.commands.mcgod.others:
         description: Allows access to the mcgod command for other players
+    mcmmo.commands.quest:
+        description: Allows access to the quest command
+    mcmmo.commands.quest.others:
+        description: Allows access to the quest command for other players        
     mcmmo.commands.mcmmo.*:
         default: false
         description: Implies access to all mcmmo.commands.mcmmo permissions

@@ -49,8 +49,14 @@ public class McmmoCommand implements CommandExecutor {
                     displayOtherCommands(sender);
                     displayPartyCommands(sender);
                 }
+               
+                if (args[0].equalsIgnoreCase("quest")) {
+                   
+                    sender.sendMessage("QUest1");
+                    sender.sendMessage("QUest2");
+                }
                 return true;
-
+                
             default:
                 return false;
         }
