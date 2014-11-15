@@ -18,7 +18,7 @@ public class McrefreshCommand extends ToggleCommand {
     }
 
     @Override
-    protected void applyCommandAction(McMMOPlayer mcMMOPlayer, String[] args) {
+    protected void applyCommandAction(McMMOPlayer mcMMOPlayer) {
         mcMMOPlayer.setRecentlyHurt(0);
         mcMMOPlayer.resetCooldowns();
         mcMMOPlayer.resetToolPrepMode();
