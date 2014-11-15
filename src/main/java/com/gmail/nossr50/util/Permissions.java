@@ -66,6 +66,9 @@ public final class Permissions {
     public static boolean mcgod(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.mcgod"); }
     public static boolean mcgodOthers(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.mcgod.others"); }
 
+    public static boolean quest(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.quest"); }
+    public static boolean questOthers(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.quest.others"); }
+    
     public static boolean mcmmoDescription(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.mcmmo.description"); }
     public static boolean mcmmoHelp(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.mcmmo.help"); }
 

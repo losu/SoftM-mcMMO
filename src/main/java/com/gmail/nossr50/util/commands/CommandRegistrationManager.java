@@ -16,6 +16,7 @@ import com.gmail.nossr50.commands.McnotifyCommand;
 import com.gmail.nossr50.commands.McrefreshCommand;
 import com.gmail.nossr50.commands.McscoreboardCommand;
 import com.gmail.nossr50.commands.MobhealthCommand;
+import com.gmail.nossr50.commands.QuestCommand;
 import com.gmail.nossr50.commands.XprateCommand;
 import com.gmail.nossr50.commands.chat.AdminChatCommand;
 import com.gmail.nossr50.commands.chat.PartyChatCommand;
@@ -167,6 +168,15 @@ public final class CommandRegistrationManager {
         command.setUsage(LocaleLoader.getString("Commands.Usage.1", "mcgod", "[" + LocaleLoader.getString("Commands.Usage.Player") + "]"));
         command.setExecutor(new McgodCommand());
     }
+    private static void registerQuestCommand() {
+        PluginCommand command = mcMMO.p.getCommand("quest");
+        command.setDescription("fuck you");
+        command.setPermission("mcmmo.commands.quest;mcmmo.commands.quest.others");
+        command.setPermissionMessage(permissionsMessage);
+        command.setUsage(LocaleLoader.getString("Commands.Usage.1", "quest", "[" + LocaleLoader.getString("Commands.Usage.Player") + "]"));
+        command.setExecutor(new QuestCommand());
+    }    
+    
 
     private static void registerMcrefreshCommand() {
         PluginCommand command = mcMMO.p.getCommand("mcrefresh");
@@ -425,6 +435,7 @@ public final class CommandRegistrationManager {
         registerKrakenCommand();
         registerMcabilityCommand();
         registerMcgodCommand();
+        registerQuestCommand();
         registerMcmmoCommand();
         registerMcnotifyCommand();
         registerMcrefreshCommand();

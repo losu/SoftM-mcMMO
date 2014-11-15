@@ -56,6 +56,9 @@ import com.gmail.nossr50.util.skills.SkillUtils;
 
 import org.apache.commons.lang.Validate;
 
+import questpack.Quest;
+import questpack.QuestManager;
+
 public class McMMOPlayer {
     private Player        player;
     private PlayerProfile profile;
@@ -76,6 +79,9 @@ public class McMMOPlayer {
     private boolean abilityUse = true;
     private boolean godMode;
 
+    private Quest[] questList = QuestManager.generateQuests();
+    
+    
     private final Map<AbilityType, Boolean> abilityMode     = new HashMap<AbilityType, Boolean>();
     private final Map<AbilityType, Boolean> abilityInformed = new HashMap<AbilityType, Boolean>();
 

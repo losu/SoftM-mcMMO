@@ -18,6 +18,7 @@ public abstract class ToggleCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         switch (args.length) {
+        	
             case 0:
                 if (CommandUtils.noConsoleUsage(sender)) {
                     return true;
