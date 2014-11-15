@@ -33,7 +33,7 @@ public abstract class ToggleCommand implements TabExecutor {
                     return true;
                 }
 
-                applyCommandAction(UserManager.getPlayer(sender.getName()),args);
+                applyCommandAction(UserManager.getPlayer(sender.getName()));
                 return true;
 
             case 1:
@@ -53,7 +53,7 @@ public abstract class ToggleCommand implements TabExecutor {
                     return true;
                 }
 
-                applyCommandAction(mcMMOPlayer, args);
+                applyCommandAction(mcMMOPlayer);
                 sendSuccessMessage(sender, playerName);
                 return true;
 
@@ -75,6 +75,6 @@ public abstract class ToggleCommand implements TabExecutor {
 
     protected abstract boolean hasOtherPermission(CommandSender sender);
     protected abstract boolean hasSelfPermission(CommandSender sender);
-    protected abstract void applyCommandAction(McMMOPlayer mcMMOPlayer, String[] args);
+    protected abstract void applyCommandAction(McMMOPlayer mcMMOPlayer);
     protected abstract void sendSuccessMessage(CommandSender sender, String playerName);
 }
