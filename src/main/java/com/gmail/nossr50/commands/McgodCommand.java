@@ -18,7 +18,7 @@ public class McgodCommand extends ToggleCommand {
     }
 
     @Override
-    protected void applyCommandAction(McMMOPlayer mcMMOPlayer) {
+    protected void applyCommandAction(McMMOPlayer mcMMOPlayer,String[] args) {
         mcMMOPlayer.getPlayer().sendMessage(LocaleLoader.getString("Commands.GodMode." + (mcMMOPlayer.getGodMode() ? "Disabled" : "Enabled")));
         mcMMOPlayer.toggleGodMode();
     }
