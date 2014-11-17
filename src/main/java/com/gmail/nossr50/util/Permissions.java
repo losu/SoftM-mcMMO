@@ -69,6 +69,10 @@ public final class Permissions {
     public static boolean quest(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.quest"); }
     public static boolean questOthers(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.quest.others"); }
     
+    public static boolean grow(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.grow"); }
+    public static boolean growOthers(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.grow.others"); }
+    
+    
     public static boolean mcmmoDescription(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.mcmmo.description"); }
     public static boolean mcmmoHelp(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.mcmmo.help"); }
 
@@ -102,6 +106,17 @@ public final class Permissions {
     public static boolean mcremove(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.mcremove"); }
     public static boolean mmoupdate(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.mmoupdate"); }
 
+    public static boolean setwarp(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.setwarp"); }
+    public static boolean setwarpOthers(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.setwarp.others"); }
+    
+    public static boolean warpe(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.warpe"); }
+    public static boolean warpeOthers(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.warpe.others"); }
+    
+    public static boolean warpes(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.warpes"); }
+    public static boolean warpesOthers(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.warpes.others"); }
+    
+    
+    
     /*
      * PERKS
      */

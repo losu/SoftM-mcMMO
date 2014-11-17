@@ -5,7 +5,10 @@ import java.util.List;
 
 import org.bukkit.command.PluginCommand;
 
+import teleport.teleportManger;
+
 import com.gmail.nossr50.mcMMO;
+import com.gmail.nossr50.commands.GrowCommand;
 import com.gmail.nossr50.commands.KrakenCommand;
 import com.gmail.nossr50.commands.McImportCommand;
 import com.gmail.nossr50.commands.McabilityCommand;
@@ -175,6 +178,14 @@ public final class CommandRegistrationManager {
         command.setPermissionMessage(permissionsMessage);
         command.setUsage(LocaleLoader.getString("Commands.Usage.1", "quest", "[" + LocaleLoader.getString("Commands.Usage.Player") + "]"));
         command.setExecutor(new QuestCommand());
+    }    
+    private static void registerGrowCommand() {
+        PluginCommand command = mcMMO.p.getCommand("grow");
+        command.setDescription("lololo");
+        command.setPermission("mcmmo.commands.grow;mcmmo.commands.grow.others");
+        command.setPermissionMessage(permissionsMessage);
+        command.setUsage(LocaleLoader.getString("Commands.Usage.1", "grow", "[" + LocaleLoader.getString("Commands.Usage.Player") + "]"));
+        command.setExecutor(new GrowCommand());
     }    
     
 
@@ -429,6 +440,33 @@ public final class CommandRegistrationManager {
         command.setExecutor(new McImportCommand());
     }
 
+    private static void registersetwarpCommand() {
+        PluginCommand command = mcMMO.p.getCommand("setwarp");
+        command.setDescription("fuck you");
+        command.setPermission("mcmmo.commands.setwarp;mcmmo.commands.setwarp.others");
+        command.setPermissionMessage(permissionsMessage);
+        command.setUsage("fuck off");
+        command.setExecutor(new teleportManger());
+    }
+    private static void registerwarpeCommand() {
+        PluginCommand command = mcMMO.p.getCommand("warpe");
+        command.setDescription("fuck you");
+        command.setPermission("mcmmo.commands.warpe;mcmmo.commands.warpe.others");
+        command.setPermissionMessage(permissionsMessage);
+        command.setUsage(LocaleLoader.getString("Commands.Usage.1", "warpe", "[" + LocaleLoader.getString("Commands.Usage.Player") + "]"));
+        command.setExecutor(new teleportManger());
+    } 
+    private static void registerwarpesCommand() {
+        PluginCommand command = mcMMO.p.getCommand("warpes");
+        command.setDescription("fuck you");
+        command.setPermission("mcmmo.commands.warpes;mcmmo.commands.warpes.others");
+        command.setPermissionMessage(permissionsMessage);
+        command.setUsage(LocaleLoader.getString("Commands.Usage.1", "warpes", "[" + LocaleLoader.getString("Commands.Usage.Player") + "]"));
+        command.setExecutor(new teleportManger());
+    } 
+    
+    
+    
     public static void registerCommands() {
         // Generic Commands
         registerMcImportCommand();
@@ -473,6 +511,11 @@ public final class CommandRegistrationManager {
         registerMcrankCommand();
         registerMcstatsCommand();
         registerMctopCommand();
+        registersetwarpCommand();
+        registerwarpesCommand();
+        registerwarpeCommand();
+        registerGrowCommand();
+        
 
         // Skill Commands
         registerSkillCommands();

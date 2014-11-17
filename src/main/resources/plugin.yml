@@ -21,6 +21,8 @@ load: STARTUP
 commands:
     quest:
         description: Questing plugin
+    grow:
+        description:  grows all the saplings to fully grown trees   
     xprate:
         aliases: [mcxprate]
         description: Modify the xp rate or start an event
@@ -123,6 +125,12 @@ commands:
     mcfools:
         aliases: [macho, jumping, throwing, wrecking, crafting, walking, swimming, falling, climbing, flying, diving, piggy]
         description: Deploy jokes
+    setwarp:
+        description: This is a demo command.
+    warpe:
+        description: This is a demo command.
+    warpes:
+        description: This is a demo command.        
 permissions:
     mcmmo.*:
         default: false
@@ -718,6 +726,14 @@ permissions:
         children:
             mcmmo.commands.quest: true
             mcmmo.commands.quest.others: true
+            mcmmo.commands.grow: true
+            mcmmo.commands.grow.others: true            
+            mcmmo.commands.setwarp: true
+            mcmmo.commands.setwarp.others: true
+            mcmmo.commands.warpe: true
+            mcmmo.commands.warpe.others: true
+            mcmmo.commands.warpes: true
+            mcmmo.commands.warpes.others: true
             mcmmo.commands.addlevels: true
             mcmmo.commands.addlevels.others: true
             mcmmo.commands.addxp: true
@@ -837,7 +853,24 @@ permissions:
     mcmmo.commands.quest:
         description: Allows access to the quest command
     mcmmo.commands.quest.others:
-        description: Allows access to the quest command for other players        
+        description: Allows access to the quest command for other players 
+    mcmmo.commands.grow:
+        description: Allows access to the quest command
+    mcmmo.commands.grow.others:
+        description: Allows access to the quest command for other players         
+    mcmmo.commands.setwarp.*:
+        description: Allows access to the quest command
+    mcmmo.commands.setwarp.others:
+        description: hey sucker
+    mcmmo.commands.warpe.*:
+        description: Allows access to the quest command
+    mcmmo.commands.warpe.others:
+        description: hey sucker
+    mcmmo.commands.warpes.*:
+        description: Allows access to the quest command
+    mcmmo.commands.warpes.others:
+        description: Allows access to the quest command for other players  
+    
     mcmmo.commands.mcmmo.*:
         default: false
         description: Implies access to all mcmmo.commands.mcmmo permissions

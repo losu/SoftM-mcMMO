@@ -149,6 +149,7 @@ public class BlockListener implements Listener {
             return;
         }
 
+        
         BlockState blockState = event.getBlock().getState();
         Location location = blockState.getLocation();
 
@@ -161,7 +162,7 @@ public class BlockListener implements Listener {
             Alchemy.brewingStandMap.get(location).cancelBrew();
         }
 
-        Player player = event.getPlayer();
+        final Player player = event.getPlayer();
 
         if (!UserManager.hasPlayerDataKey(player) || player.getGameMode() == GameMode.CREATIVE) {
             return;
@@ -169,6 +170,26 @@ public class BlockListener implements Listener {
 
         McMMOPlayer mcMMOPlayer = UserManager.getPlayer(player);
         ItemStack heldItem = player.getItemInHand();
+        
+  
+		final Block block = event.getBlock();
+		final byte id = block.getData();
+		if (block.getType() == Material.LOG
+				&& block.getRelative(BlockFace.DOWN).getType() == Material.DIRT) {
+			final Location loc = block.getLocation();
+		 
+			int task = plugin.getServer().getScheduler()
+					.scheduleSyncDelayedTask(plugin, new Runnable() {
+						public void run() {
+							player.getWorld()
+									.getBlockAt(loc)
+									.setTypeIdAndData(Material.SAPLING.getId(),
+											id, true);
+						}
+					}, 10L);
+		}
+        
+        
 
         /* HERBALISM */
         if (BlockUtils.affectedByGreenTerra(blockState)) {
