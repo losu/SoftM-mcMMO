@@ -20,6 +20,7 @@ import com.gmail.nossr50.commands.McrefreshCommand;
 import com.gmail.nossr50.commands.McscoreboardCommand;
 import com.gmail.nossr50.commands.MobhealthCommand;
 import com.gmail.nossr50.commands.QuestCommand;
+import com.gmail.nossr50.commands.WarpCommand;
 import com.gmail.nossr50.commands.XprateCommand;
 import com.gmail.nossr50.commands.chat.AdminChatCommand;
 import com.gmail.nossr50.commands.chat.PartyChatCommand;
@@ -446,23 +447,23 @@ public final class CommandRegistrationManager {
         command.setPermission("mcmmo.commands.setwarp;mcmmo.commands.setwarp.others");
         command.setPermissionMessage(permissionsMessage);
         command.setUsage("fuck off");
-        command.setExecutor(new teleportManger());
+        command.setExecutor(new  WarpCommand());
     }
     private static void registerwarpeCommand() {
         PluginCommand command = mcMMO.p.getCommand("warpe");
         command.setDescription("fuck you");
         command.setPermission("mcmmo.commands.warpe;mcmmo.commands.warpe.others");
         command.setPermissionMessage(permissionsMessage);
-        command.setUsage(LocaleLoader.getString("Commands.Usage.1", "warpe", "[" + LocaleLoader.getString("Commands.Usage.Player") + "]"));
-        command.setExecutor(new teleportManger());
+        command.setUsage("sedonc");
+        command.setExecutor(new  WarpCommand());
     } 
     private static void registerwarpesCommand() {
         PluginCommand command = mcMMO.p.getCommand("warpes");
         command.setDescription("fuck you");
         command.setPermission("mcmmo.commands.warpes;mcmmo.commands.warpes.others");
         command.setPermissionMessage(permissionsMessage);
-        command.setUsage(LocaleLoader.getString("Commands.Usage.1", "warpes", "[" + LocaleLoader.getString("Commands.Usage.Player") + "]"));
-        command.setExecutor(new teleportManger());
+        command.setUsage("asdasd");
+        command.setExecutor(new WarpCommand());
     } 
     
     
