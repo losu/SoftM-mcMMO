@@ -20,24 +20,25 @@ public class QuestManager {
                
         }
  
-        public static void checkIsQuestFinished (McMMOPlayer mcMMOPlayer, int questNumber){
+        public static boolean checkIsQuestFinished (McMMOPlayer mcMMOPlayer, int questNumber){
         	Player player = mcMMOPlayer.getPlayer();
         	PlayerInventory playerInventory = player.getInventory();
         
         	Quest[] questList = mcMMOPlayer.getQuestData();
         	ItemStack itemStack = new ItemStack(questList[questNumber].getMaterial());
-        	if (playerInventory.containsAtLeast(itemStack, questList[questNumber].getAmountOfMaterial()))
+        	if (playerInventory.contains(questList[questNumber].getMaterial(), questList[questNumber].getAmountOfMaterial()))
         	{
- 
+        		
         		mcMMOPlayer.getPlayer().sendMessage("You finish the Quest ! "+ questList[questNumber].getName());
         		questList[questNumber].setStateOfTheQuest(2);
-        		
+        		return true;
         	}
         	else{
- 	
+        		
+        		
         		mcMMOPlayer.getPlayer().sendMessage("You have to collect more items ! ");
         		questList[questNumber].setStateOfTheQuest(1);
-        		
+        		return false;
         	}       	
         }
         
@@ -48,15 +49,16 @@ public class QuestManager {
         	Quest[] questList = mcMMOPlayer.getQuestData();
         	ItemStack itemStack = new ItemStack(questList[questNumber].getMaterial());
         	
-        	checkIsQuestFinished(mcMMOPlayer,questNumber);
+        	//checkIsQuestFinished(mcMMOPlayer,questNumber);
         	
-        	if(questList[questNumber].getQuestStatus()==2)
+        	if((questList[questNumber].getQuestStatus()==2) && (checkIsQuestFinished(mcMMOPlayer,questNumber)))
         	{
         		mcMMOPlayer.getPlayer().sendMessage("ALREADY COMPLITED ! ");
         	}
-        	else if (questList[questNumber].getQuestStatus()==1)
+        	else if ((questList[questNumber].getQuestStatus()==1) &&(!checkIsQuestFinished(mcMMOPlayer,questNumber)))
         	{
-        		if (!playerInventory.containsAtLeast(itemStack, questList[questNumber].getAmountOfMaterial()))
+        		
+        		if (!playerInventory.contains(questList[questNumber].getMaterial(), questList[questNumber].getAmountOfMaterial()))
         			mcMMOPlayer.getPlayer().sendMessage("In progress ! ");	
         	}
         	

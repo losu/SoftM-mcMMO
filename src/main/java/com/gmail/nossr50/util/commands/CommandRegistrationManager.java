@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.bukkit.command.PluginCommand;
 
-import teleport.teleportManger;
+//import teleport.teleportManger;
 
 import com.gmail.nossr50.mcMMO;
 import com.gmail.nossr50.commands.GrowCommand;
