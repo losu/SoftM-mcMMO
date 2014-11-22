@@ -46,7 +46,7 @@ public class QuestManager {
         	Player player = mcMMOPlayer.getPlayer();
         	PlayerInventory playerInventory = player.getInventory();
         	Quest[] questList = mcMMOPlayer.getQuestData();
-        	ItemStack itemStack = new ItemStack(questList[questNumber].getMaterial());
+        	
         	
         	//checkIsQuestFinished(mcMMOPlayer,questNumber);
         	 if (questList[questNumber].getQuestStatus() == 2) 
@@ -58,10 +58,10 @@ public class QuestManager {
         		 if (checkIsQuestFinished(mcMMOPlayer, questNumber))
         		 {
         			 mcMMOPlayer.getPlayer().sendMessage("QUEST" + questList[questNumber].getName() + " COMPLETED");
-        			 for (int i=0;i<=questList[questNumber].getAmountOfMaterial();i++)
-        			 {
-        				 playerInventory.remove(questList[questNumber].getMaterial());
-        			 }
+        			 ItemStack toRemoveitemStack = new ItemStack(questList[questNumber].getMaterial());
+        			 toRemoveitemStack.setAmount(questList[questNumber].getAmountOfMaterial());
+        			 playerInventory.removeItem(toRemoveitemStack);
+
         			 handleReward(mcMMOPlayer,questNumber);
         		 }
         	 }
