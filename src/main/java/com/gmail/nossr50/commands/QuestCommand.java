@@ -47,15 +47,15 @@ public class QuestCommand implements TabExecutor {
 					switch (status) {
 					case 0:
 						mcMMOPlayer.getPlayer().sendMessage(ChatColor.GRAY + "#"+
-								i + " " + quests[i].getName() + ChatColor.GREEN + " AVAILABLE");
+								i + " " + ChatColor.WHITE + quests[i].getName() + ChatColor.GREEN + " AVAILABLE");
 						break;
 					case 1:
 						mcMMOPlayer.getPlayer().sendMessage(ChatColor.GRAY + "#"+
-								i + " " + quests[i].getName() + ChatColor.YELLOW + " IN PROGRESS");
+								i + " "  + ChatColor.WHITE + quests[i].getName() + ChatColor.YELLOW + " IN PROGRESS");
 						break;
 					case 2:
 						mcMMOPlayer.getPlayer().sendMessage(ChatColor.GRAY + "#"+
-								i + " " + quests[i].getName() + ChatColor.RED + " COMPLETED");
+								i + " " + ChatColor.WHITE + quests[i].getName() + ChatColor.RED + " COMPLETED");
 						break;
 					}
 				}
@@ -63,8 +63,7 @@ public class QuestCommand implements TabExecutor {
 
 			return true;
 		case 1:
-			mcMMOPlayer.getPlayer().sendMessage(
-					"Choosing the quest #" + args[0] +", " + ChatColor.GRAY + quests[Integer.parseInt(args[0])].getName());
+			
 			QuestManager.handleQuest(mcMMOPlayer, Integer.parseInt(args[0]));
 			return true;
 
