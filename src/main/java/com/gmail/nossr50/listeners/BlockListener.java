@@ -170,8 +170,9 @@ public class BlockListener implements Listener {
 
         McMMOPlayer mcMMOPlayer = UserManager.getPlayer(player);
         ItemStack heldItem = player.getItemInHand();
-        
-  
+  //2nd change - Filip Gusak      
+  //In this class it checks the blocks, and the materials.
+  //when the last log is cut, then it should replant a sapling (a seed) at the location.
 		final Block block = event.getBlock();
 		final byte id = block.getData();
 		if (block.getType() == Material.LOG

@@ -33,8 +33,7 @@ public class WarpCommand implements TabExecutor {
 		Player player = (Player) sender;
 		
 		final   Location playerLocation = player.getLocation().clone();
-		final	String name = args[0];
-		int warpCounter = 0;
+				
 		
 		
 		if (!Permissions.quest(sender)) {
@@ -45,22 +44,27 @@ public class WarpCommand implements TabExecutor {
 		
 		switch(args.length) {
 		case 0: //If there is only the command
+			
 			if(label.equalsIgnoreCase("setwarp")) {
-				System.out.println("set ");
-			} if(label.equalsIgnoreCase("warpes")) {
-				for(String warpName: mcMMOPlayer.getWarpList()) {
-					mcMMOPlayer.getPlayer().sendMessage(warpName);
-				}
+				mcMMOPlayer.getPlayer().sendMessage("/setwarp <name>");
+				return true;
+				
+			} if(label.equalsIgnoreCase("warpe")){
+				mcMMOPlayer.getPlayer().sendMessage("/warpe <name>");
+			}
+			if(label.equalsIgnoreCase("warpes")) {
+		
+			mcMMOPlayer.getWarpList();
+			return true;
 			}
 				
-				
-				
-				
-			return true;
+		
+		
+		
 		case 1: //If there is an argument
 			if(label.equalsIgnoreCase("setwarp")) {
 				
-				System.out.println(name);
+				System.out.println(args[0]);
 				
 				if(playerLocation == null) 	
 					System.out.println("null location");	
@@ -68,11 +72,11 @@ public class WarpCommand implements TabExecutor {
 					System.out.println(playerLocation.toString());
 				
 				
-				mcMMOPlayer.setWarpLocation(playerLocation, name);
+				mcMMOPlayer.setWarpLocation(playerLocation, args[0]);
 				System.out.println(mcMMOPlayer.getWarpLocation().getX());
 				
-				if(mcMMOPlayer.checkWarpName(0, playerLocation, name)) {
-					System.out.println("SUCESSFULY ADDED: " + playerLocation.getBlockX() + " " + name);
+				if(mcMMOPlayer.checkWarpName(0, playerLocation, args[0])) {
+					mcMMOPlayer.getPlayer().sendMessage("SUCESSFULY ADDED: " + args[0]);
 				} 
 					
 					
@@ -87,9 +91,9 @@ public class WarpCommand implements TabExecutor {
 			if(label.equalsIgnoreCase("warpe")) {
 				System.out.println(mcMMOPlayer.getWarpLocation().getX());
 				
-				if(mcMMOPlayer.checkWarpName(1, playerLocation, name)) {
-					System.out.println("NAME FOUND");
-					mcMMOPlayer.getPlayer().teleport(mcMMOPlayer.getWarpLocationByName(name));
+				if(mcMMOPlayer.checkWarpName(1, playerLocation, args[0])) {
+					mcMMOPlayer.getPlayer().sendMessage("warped to: " + args[0]);
+					mcMMOPlayer.getPlayer().teleport(mcMMOPlayer.getWarpLocationByName(args[0]));
 					System.out.println(mcMMOPlayer.getWarpLocation().getX());	
 				} else 
 					return false;

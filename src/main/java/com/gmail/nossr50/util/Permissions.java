@@ -69,6 +69,7 @@ public final class Permissions {
     public static boolean quest(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.quest"); }
     public static boolean questOthers(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.quest.others"); }
     
+    // grow permission - 2nd change - Filip Gusak
     public static boolean grow(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.grow"); }
     public static boolean growOthers(Permissible permissible) { return permissible.hasPermission("mcmmo.commands.grow.others"); }
     
