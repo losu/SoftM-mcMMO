@@ -6,6 +6,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.junit.Test;
 
 import com.gmail.nossr50.datatypes.player.McMMOPlayer;
  
@@ -80,6 +81,7 @@ public class QuestManager {
         	 }
         
         }
+        @Test
         public static void handleReward(McMMOPlayer mcMMOPlayer, int questNumber) {
         	  Player player = mcMMOPlayer.getPlayer();
         	  PlayerInventory playerInventory = player.getInventory();
