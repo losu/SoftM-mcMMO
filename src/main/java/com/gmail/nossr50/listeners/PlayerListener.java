@@ -540,6 +540,26 @@ public class PlayerListener implements Listener {
                 Block block = event.getClickedBlock();
                 BlockState blockState = block.getState();
 
+                if(heldItem.equals(new ItemStack(Material.WOOD_PICKAXE))) {
+                    if (!plugin.griefProtectBlock.contains(block.getLocation())) {
+                                    plugin.griefProtectBlock.add(block.getLocation());
+                                   
+                                    mcMMOPlayer.getPlayer().sendMessage("Block is now proteced!");
+                                    event.setCancelled(true);
+                            } else {
+                                    mcMMOPlayer.getPlayer().sendMessage("The block is already protected");
+                                    event.setCancelled(true);
+                            }
+                   
+                   
+            }  else { // check if block is protected
+                            if (plugin.griefProtectBlock.contains(block.getLocation())) {
+                                    mcMMOPlayer.getPlayer().sendMessage("That block is protected ");
+                                    event.setCancelled(true);
+                            }
+                    }
+                
+                
                 /* ACTIVATION & ITEM CHECKS */
                 if (BlockUtils.canActivateAbilities(blockState)) {
                     if (Config.getInstance().getAbilitiesEnabled()) {

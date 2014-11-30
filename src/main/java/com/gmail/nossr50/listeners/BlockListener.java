@@ -153,6 +153,16 @@ public class BlockListener implements Listener {
         BlockState blockState = event.getBlock().getState();
         Location location = blockState.getLocation();
 
+        if (plugin.griefProtectBlock.contains(event.getBlock().getLocation())) { // ADAMA CHANGE 2X
+            Player player = event.getPlayer();
+            McMMOPlayer mcMMOPlayer = UserManager.getPlayer(player);
+           
+            mcMMOPlayer.getPlayer().sendMessage("That block is protected "); 
+                                                                                                                                                    // it
+            event.setCancelled(true);
+    }
+        
+        
         if (!BlockUtils.shouldBeWatched(blockState)) {
             return;
         }

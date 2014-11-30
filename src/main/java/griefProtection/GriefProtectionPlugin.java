@@ -23,7 +23,7 @@ public class GriefProtectionPlugin extends JavaPlugin {
 		this.logger.info(pdfFile.getName() + "Version " + pdfFile.getVersion() + " Has been Enabled!");
 		
 		// gets the varibales from GriefProtectionListener 
-		getServer().getPluginManager().registerEvents( new GiefProtectionListener(this),(this));
+	//	getServer().getPluginManager().registerEvents( new GiefProtectionListener(this),(this));
 		
 	}
 
