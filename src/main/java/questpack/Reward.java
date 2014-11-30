@@ -7,8 +7,8 @@ public class Reward {
         private Material material;
         private int exp;
        
-        public Reward(Material goldNugget, int exp) {
-                this.material = goldNugget;
+        public Reward(Material material, int exp) {
+                this.material = material;
                 this.exp = exp;
         }
  

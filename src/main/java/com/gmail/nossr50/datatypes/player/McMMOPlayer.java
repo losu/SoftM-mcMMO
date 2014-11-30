@@ -357,8 +357,13 @@ public class McMMOPlayer {
 
 	}
 	
-	public ArrayList<String> getWarpList() {
-		return warpNames;
+	public  void getWarpList() {
+		for (int i = 0; i < warpNames.size(); i++) {
+			
+		 
+		player.sendMessage(warpNames.get(i));
+		}
+		
 	}
 	
 	
