@@ -13,20 +13,20 @@ public class GiefProtectionListener implements Listener {
 
 	public GriefProtectionPlugin plugin;
 
-	// i nsert rest of code
-
 	public GiefProtectionListener(GriefProtectionPlugin instance) {
 		plugin = instance;
 	}
 
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		try {
-			if (event.getPlayer().getItemInHand()
+			// If player using wood pickaxe and right clicking on block:
+			if (event.getPlayer().getItemInHand() 
 					.equals(new ItemStack(Material.WOOD_PICKAXE))
 					&& event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-
+			// If the blocked dont have event (protection) and getting clicked: 
 				if (!plugin.blocks.contains(event.getClickedBlock()
 						.getLocation())) {
+			// 		add the event(protection) when clicking on a block and sending the message
 					plugin.blocks.add(event.getClickedBlock().getLocation());
 					sendMessage(event.getPlayer(), "Block is now proteced!");
 					event.setCancelled(true);
@@ -36,7 +36,7 @@ public class GiefProtectionListener implements Listener {
 					event.setCancelled(true);
 				}
 
-			} else { // check if block is protected
+			} else { // doing this if the block is already protected
 				if (plugin.blocks.contains(event.getClickedBlock()
 						.getLocation())) {
 					sendMessage(event.getPlayer(), "That block is protected ");
