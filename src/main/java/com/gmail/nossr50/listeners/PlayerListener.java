@@ -540,7 +540,7 @@ public class PlayerListener implements Listener {
                 Block block = event.getClickedBlock();
                 BlockState blockState = block.getState();
 
-                if(heldItem.equals(new ItemStack(Material.WOOD_PICKAXE))) {
+                if(heldItem.equals(new ItemStack(Material.WOOD_PICKAXE))) { //ADAMA CHANGE 2x
                     if (!plugin.griefProtectBlock.contains(block.getLocation())) {
                                     plugin.griefProtectBlock.add(block.getLocation());
                                    
