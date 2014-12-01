@@ -125,7 +125,7 @@ public class mcMMO extends JavaPlugin {
     public final static String pistonDataKey       = "mcMMO: Piston State";
     public final static String databaseCommandKey  = "mcMMO: Processing Database Command";
     public final static ArrayList <Location> griefProtectBlock = new ArrayList<Location>(); //Adama change 2x
-    public final static ArrayList <Location> saplingsList = new ArrayList<Location>();
+    public final static ArrayList <Location> saplingsList = new ArrayList<Location>(); //Filip 2nd change request
     public static FixedMetadataValue metadataValue;
 
     /**
