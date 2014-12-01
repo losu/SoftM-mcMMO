@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -123,7 +124,8 @@ public class mcMMO extends JavaPlugin {
     public final static String greenThumbDataKey   = "mcMMO: Green Thumb";
     public final static String pistonDataKey       = "mcMMO: Piston State";
     public final static String databaseCommandKey  = "mcMMO: Processing Database Command";
-
+    public final static ArrayList <Location> griefProtectBlock = new ArrayList<Location>(); //Adama change 2x
+    public final static ArrayList <Location> saplingsList = new ArrayList<Location>();
     public static FixedMetadataValue metadataValue;
 
     /**
