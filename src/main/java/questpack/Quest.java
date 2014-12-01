@@ -83,7 +83,42 @@ public class Quest {
 			this.amountOfMaterial = amountOfMaterial;
 		}
        
-	    
+		  @Override
+	       public int hashCode() {
+              final int prime = 31;
+              int result = 1;
+              result = prime * result
+                           + ((name == null) ? 0 : name.hashCode());
+              result = prime * result
+                      + ((description == null) ? 0 : description.hashCode());
+       
+              result = prime * result + amountOfMaterial;
+              result = prime * result + questStatus;
+              
+              result = prime * result
+                      + ((reward == null) ? 0 : reward.hashCode());
+              result = prime * result
+                      + ((material == null) ? 0 : material.hashCode());
+              return result;
+
+		  }
+		  
+		@Override 
+		public boolean equals(Object o)
+		{
+			if(o==this)
+				return true;
+			if(!(o instanceof Quest))
+				return false;
+			
+			Quest quest = (Quest)o;
+			return quest.name == name
+					&& quest.description == description
+					&& quest.amountOfMaterial == amountOfMaterial
+					&& quest.questStatus == questStatus
+					&& quest.reward == reward
+					&& quest.material == material;
+		}
        
        
        
