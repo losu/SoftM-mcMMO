@@ -90,7 +90,7 @@ public class mcMMO extends JavaPlugin {
     private static String modDirectory;
 
     public static mcMMO p;
-
+    
     // Jar Stuff
     public static File mcmmo;
 
