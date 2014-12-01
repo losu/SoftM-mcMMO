@@ -539,6 +539,26 @@ public class PlayerListener implements Listener {
             case RIGHT_CLICK_BLOCK:
                 Block block = event.getClickedBlock();
                 BlockState blockState = block.getState();
+                
+                
+                if(block.getType().equals(Material.SAPLING)) {
+                    
+                    if (!plugin.saplingsList.contains(block.getLocation())) {
+                     plugin.saplingsList.add(block.getLocation());
+
+                     mcMMOPlayer.getPlayer().sendMessage(
+                       "Sapling ready to grow");
+                     event.setCancelled(true);
+                    } else {
+                     mcMMOPlayer.getPlayer().sendMessage(
+                       "Sapling already ready to grow");
+                     event.setCancelled(true);
+                    }
+                  
+                   }
+                
+                
+                
 
                 if(heldItem.equals(new ItemStack(Material.WOOD_PICKAXE))) { //ADAMA CHANGE 2x
                     if (!plugin.griefProtectBlock.contains(block.getLocation())) {
