@@ -542,7 +542,7 @@ public class PlayerListener implements Listener {
                 
                 //Filip 2nd change of the change request
                 //when the player right clicks on the sapling, it should return a message 
-                //that is ready to grow, and then it is up to date 
+                //that is ready to grow, and then it is up to date  
                 if(block.getType().equals(Material.SAPLING))  {
                     
                     if (!plugin.saplingsList.contains(block.getLocation())) {
