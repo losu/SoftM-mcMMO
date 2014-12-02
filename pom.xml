@@ -134,9 +134,19 @@
             <id>Plugin MetricsExtension</id>
             <url>http://repo.turt2live.com</url>
         </repository>
+        <repository>
+            <id>oss.sonatype.org</id>
+            <name>oss.sonatype.org</name>
+            <url>http://oss.sonatype.org/content/groups/public</url>
+        </repository>
     </repositories>
     <dependencies>
-        <dependency>
+<dependency>
+        <groupId>org.sikuli</groupId>
+        <artifactId>sikuli-api</artifactId>
+        <version>1.2.0</version>
+</dependency>
+<dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
             <version>1.7.10-R0.1</version>
