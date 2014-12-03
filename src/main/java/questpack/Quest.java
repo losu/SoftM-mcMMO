@@ -1,12 +1,6 @@
 package questpack;
  
-import java.util.Dictionary;
-
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.PlayerInventory;
-
-import com.gmail.nossr50.datatypes.player.McMMOPlayer;
  
 public class Quest {
  

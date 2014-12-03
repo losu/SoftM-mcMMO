@@ -20,11 +20,13 @@ public class McMMOPlayerBrewEvent extends McMMOPlayerSkillEvent implements Cance
         cancelled = false;
     }
 
-    public boolean isCancelled() {
+    @Override
+	public boolean isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean newValue) {
+    @Override
+	public void setCancelled(boolean newValue) {
         this.cancelled = newValue;
     }
 

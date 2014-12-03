@@ -52,7 +52,8 @@ public final class FlatfileDatabaseManager implements DatabaseManager {
         }
     }
 
-    public void purgePowerlessUsers() {
+    @Override
+	public void purgePowerlessUsers() {
         int purgedUsers = 0;
 
         mcMMO.p.getLogger().info("Purging powerless users...");
@@ -119,7 +120,8 @@ public final class FlatfileDatabaseManager implements DatabaseManager {
         mcMMO.p.getLogger().info("Purged " + purgedUsers + " users from the database.");
     }
 
-    public void purgeOldUsers() {
+    @Override
+	public void purgeOldUsers() {
         int removedPlayers = 0;
         long currentTime = System.currentTimeMillis();
 
@@ -198,7 +200,8 @@ public final class FlatfileDatabaseManager implements DatabaseManager {
         mcMMO.p.getLogger().info("Purged " + removedPlayers + " users from the database.");
     }
 
-    public boolean removeUser(String playerName) {
+    @Override
+	public boolean removeUser(String playerName) {
         boolean worked = false;
 
         BufferedReader in = null;
@@ -253,7 +256,8 @@ public final class FlatfileDatabaseManager implements DatabaseManager {
         return worked;
     }
 
-    public boolean saveUser(PlayerProfile profile) {
+    @Override
+	public boolean saveUser(PlayerProfile profile) {
         String playerName = profile.getPlayerName();
         UUID uuid = profile.getUniqueId();
 
@@ -354,7 +358,8 @@ public final class FlatfileDatabaseManager implements DatabaseManager {
         }
     }
 
-    public List<PlayerStat> readLeaderboard(SkillType skill, int pageNumber, int statsPerPage) {
+    @Override
+	public List<PlayerStat> readLeaderboard(SkillType skill, int pageNumber, int statsPerPage) {
         updateLeaderboards();
         List<PlayerStat> statsList = skill == null ? powerLevels : playerStatHash.get(skill);
         int fromIndex = (Math.max(pageNumber, 1) - 1) * statsPerPage;
@@ -362,7 +367,8 @@ public final class FlatfileDatabaseManager implements DatabaseManager {
         return statsList.subList(Math.min(fromIndex, statsList.size()), Math.min(fromIndex + statsPerPage, statsList.size()));
     }
 
-    public Map<SkillType, Integer> readRank(String playerName) {
+    @Override
+	public Map<SkillType, Integer> readRank(String playerName) {
         updateLeaderboards();
 
         Map<SkillType, Integer> skills = new HashMap<SkillType, Integer>();
@@ -376,7 +382,8 @@ public final class FlatfileDatabaseManager implements DatabaseManager {
         return skills;
     }
 
-    public void newUser(String playerName, UUID uuid) {
+    @Override
+	public void newUser(String playerName, UUID uuid) {
         BufferedWriter out = null;
         synchronized (fileWritingLock) {
             try {
@@ -447,16 +454,19 @@ public final class FlatfileDatabaseManager implements DatabaseManager {
         }
     }
 
-    @Deprecated
+    @Override
+	@Deprecated
     public PlayerProfile loadPlayerProfile(String playerName, boolean create) {
         return loadPlayerProfile(playerName, null, false);
     }
 
-    public PlayerProfile loadPlayerProfile(UUID uuid) {
+    @Override
+	public PlayerProfile loadPlayerProfile(UUID uuid) {
         return loadPlayerProfile("", uuid, false);
     }
 
-    public PlayerProfile loadPlayerProfile(String playerName, UUID uuid, boolean create) {
+    @Override
+	public PlayerProfile loadPlayerProfile(String playerName, UUID uuid, boolean create) {
         BufferedReader in = null;
         String usersFilePath = mcMMO.getUsersFilePath();
 
@@ -527,7 +537,8 @@ public final class FlatfileDatabaseManager implements DatabaseManager {
         return new PlayerProfile(playerName, uuid);
     }
 
-    public void convertUsers(DatabaseManager destination) {
+    @Override
+	public void convertUsers(DatabaseManager destination) {
         BufferedReader in = null;
         String usersFilePath = mcMMO.getUsersFilePath();
         int convertedUsers = 0;
@@ -568,7 +579,8 @@ public final class FlatfileDatabaseManager implements DatabaseManager {
         }
     }
 
-    public boolean saveUserUUID(String userName, UUID uuid) {
+    @Override
+	public boolean saveUserUUID(String userName, UUID uuid) {
         boolean worked = false;
 
         BufferedReader in = null;
@@ -626,7 +638,8 @@ public final class FlatfileDatabaseManager implements DatabaseManager {
         return worked;
     }
 
-    public boolean saveUserUUIDs(Map<String, UUID> fetchedUUIDs) {
+    @Override
+	public boolean saveUserUUIDs(Map<String, UUID> fetchedUUIDs) {
         BufferedReader in = null;
         FileWriter out = null;
         String usersFilePath = mcMMO.getUsersFilePath();
@@ -682,7 +695,8 @@ public final class FlatfileDatabaseManager implements DatabaseManager {
         return true;
     }
 
-    public List<String> getStoredUsers() {
+    @Override
+	public List<String> getStoredUsers() {
         ArrayList<String> users = new ArrayList<String>();
         BufferedReader in = null;
         String usersFilePath = mcMMO.getUsersFilePath();
@@ -1155,7 +1169,8 @@ public final class FlatfileDatabaseManager implements DatabaseManager {
         return skills;
     }
 
-    public DatabaseType getDatabaseType() {
+    @Override
+	public DatabaseType getDatabaseType() {
         return DatabaseType.FLATFILE;
     }
 

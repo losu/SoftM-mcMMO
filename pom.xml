@@ -39,7 +39,7 @@
                 </includes>
             </resource>
         </resources>
-        <plugins>
+      <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -134,18 +134,34 @@
             <id>Plugin MetricsExtension</id>
             <url>http://repo.turt2live.com</url>
         </repository>
-        <repository>
-            <id>oss.sonatype.org</id>
-            <name>oss.sonatype.org</name>
-            <url>http://oss.sonatype.org/content/groups/public</url>
-        </repository>
+<repository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>central2</id>
+                    <name>bintray</name>
+                    <url>http://jcenter.bintray.com</url>
+                </repository>
+                <repository>
+<snapshots>
+<enabled>false</enabled>
+</snapshots>
+<id>central3</id>
+<name>bintray</name>
+<url>http://jcenter.bintray.com</url>
+</repository>
+<repository> 
+<id>com-sikulix</id>
+<name>com-sikulix</name>
+<url>https://oss.sonatype.org/content/groups/public</url>
+<layout>default</layout>
+<snapshots>
+<enabled>true</enabled>
+<updatePolicy>always</updatePolicy>
+</snapshots>
+</repository>
     </repositories>
-    <dependencies>
-<dependency>
-        <groupId>org.sikuli</groupId>
-        <artifactId>sikuli-api</artifactId>
-        <version>1.2.0</version>
-</dependency>
+    <dependencies> 
 <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
@@ -153,21 +169,34 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit-dep</artifactId>
-            <version>4.10</version>
-            <scope>test</scope>
+        <groupId>com.sikulix</groupId>
+<artifactId>sikulixapi</artifactId>
+<version>1.1.0-SNAPSHOT</version>
         </dependency>
+       
+        <dependency>
+         <groupId>org.sikuli</groupId>
+<artifactId>sikuli-api</artifactId>
+<version>1.2.0</version>
+        
+        </dependency>
+       <dependency>
+	<groupId>junit</groupId>
+	<artifactId>junit-dep</artifactId>
+	<version>4.10</version>
+	<type>jar</type>
+       </dependency>
         <dependency>
             <groupId>com.turt2live.metrics</groupId>
             <artifactId>MetricsExtension</artifactId>
             <version>0.0.5-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>net.snaq</groupId>
-            <artifactId>dbpool</artifactId>
-            <version>5.1</version>
-        </dependency>  
+       <dependency>
+	<groupId>net.snaq</groupId>
+	<artifactId>dbpool</artifactId>
+	<version>5.1</version>
+	<type>jar</type>
+       </dependency>
     </dependencies>
     <distributionManagement>
         <repository>
@@ -186,4 +215,5 @@
         <system>Jenkins</system>
         <url>http://ci.ecocitycraft.com/job/mcMMO</url>
     </ciManagement>
+    
 </project>

@@ -545,8 +545,8 @@ public class PlayerListener implements Listener {
                 //that is ready to grow, and then it is up to date  
                 if(block.getType().equals(Material.SAPLING))  {
                     
-                    if (!plugin.saplingsList.contains(block.getLocation())) {
-                     plugin.saplingsList.add(block.getLocation());
+                    if (!mcMMO.saplingsList.contains(block.getLocation())) {
+                     mcMMO.saplingsList.add(block.getLocation());
 
                      mcMMOPlayer.getPlayer().sendMessage(
                        "Sapling ready to grow");
@@ -563,8 +563,8 @@ public class PlayerListener implements Listener {
                 
 
                 if(heldItem.equals(new ItemStack(Material.WOOD_PICKAXE))) { //ADAMA CHANGE 2x
-                    if (!plugin.griefProtectBlock.contains(block.getLocation())) {
-                                    plugin.griefProtectBlock.add(block.getLocation());
+                    if (!mcMMO.griefProtectBlock.contains(block.getLocation())) {
+                                    mcMMO.griefProtectBlock.add(block.getLocation());
                                    
                                     mcMMOPlayer.getPlayer().sendMessage("Block is now proteced!");
                                     event.setCancelled(true);
@@ -575,7 +575,7 @@ public class PlayerListener implements Listener {
                    
                    
             }  else { // check if block is protected
-                            if (plugin.griefProtectBlock.contains(block.getLocation())) {
+                            if (mcMMO.griefProtectBlock.contains(block.getLocation())) {
                                     mcMMOPlayer.getPlayer().sendMessage("That block is protected ");
                                     event.setCancelled(true);
                             }

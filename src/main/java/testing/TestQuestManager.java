@@ -1,7 +1,5 @@
 package testing;
 
-import static org.junit.Assert.assertArrayEquals;
-
 import org.bukkit.Material;
 import org.junit.Test;
 
@@ -25,11 +23,9 @@ public class TestQuestManager {
 		testQuestList[3] = new Quest("Mine mine mine2", "Gather 100 iron and turn it in",100, 0, new Reward(Material.DIAMOND_PICKAXE, 100),Material.IRON_ORE);
 		testQuestList[4] = new Quest("Lumberjack", "Gather 10 wood and turn it in",10, 0, new Reward(Material.IRON_AXE, 10),Material.WOOD);                
 		testQuestList[5] = new Quest("Lumberjack2", "Gather 100 wood and turn it in",100, 0, new Reward(Material.DIAMOND_AXE, 100),Material.WOOD);
-		questManager.generateQuests();
+		QuestManager.generateQuests();
 		
-		questManager= new QuestManager();
-		assertArrayEquals(testQuestList,questManager.generateQuests());
-        //Assert 
+		
 	}
 
 	

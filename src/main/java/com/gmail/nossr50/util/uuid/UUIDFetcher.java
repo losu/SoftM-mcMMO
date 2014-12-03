@@ -34,7 +34,8 @@ public class UUIDFetcher implements Callable<Map<String, UUID>> {
         this(names, true);
     }
 
-    public Map<String, UUID> call() throws Exception {
+    @Override
+	public Map<String, UUID> call() throws Exception {
         Map<String, UUID> uuidMap = new HashMap<String, UUID>();
         int requests = (int) Math.ceil(names.size() / PROFILES_PER_REQUEST);
         for (int i = 0; i < requests; i++) {

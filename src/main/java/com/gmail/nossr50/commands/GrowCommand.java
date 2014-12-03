@@ -23,12 +23,9 @@ import org.bukkit.util.StringUtil;
 import questpack.Quest;
 import questpack.QuestManager;
 import testing.TestQuestManager;
-import testing.figus12;
+
 
 import org.bukkit.Location;
-import org.junit.runner.JUnitCore;
-import org.junit.runner.notification.Failure;
-
 import com.gmail.nossr50.mcMMO;
 import com.gmail.nossr50.config.experience.ExperienceConfig;
 import com.gmail.nossr50.datatypes.player.McMMOPlayer;
@@ -72,19 +69,19 @@ public class GrowCommand implements TabExecutor {
 					world.generateTree(loc, TreeType.TREE);
 					break;
 				case 1:
-					world.generateTree(loc, TreeType.TREE.REDWOOD);
+					world.generateTree(loc, TreeType.REDWOOD);
 					break;
 				case 2:
-					world.generateTree(loc, TreeType.TREE.BIRCH);
+					world.generateTree(loc, TreeType.BIRCH);
 					break;
 				case 3:
-					world.generateTree(loc, TreeType.TREE.JUNGLE);
+					world.generateTree(loc, TreeType.JUNGLE);
 					break;
 				case 4:
-					world.generateTree(loc, TreeType.TREE.ACACIA);
+					world.generateTree(loc, TreeType.ACACIA);
 					break;
 				case 5:
-					world.generateTree(loc, TreeType.TREE.DARK_OAK);
+					world.generateTree(loc, TreeType.DARK_OAK);
 					break;
 				}
 

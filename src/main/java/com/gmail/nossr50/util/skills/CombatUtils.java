@@ -3,8 +3,6 @@ package com.gmail.nossr50.util.skills;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
-
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

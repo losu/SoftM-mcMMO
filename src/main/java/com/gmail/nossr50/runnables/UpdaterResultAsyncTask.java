@@ -17,7 +17,7 @@ public class UpdaterResultAsyncTask extends BukkitRunnable {
 
     @Override
     public void run() {
-        Updater updater = new Updater(plugin, 31030, plugin.mcmmo, Updater.UpdateType.NO_DOWNLOAD, false);
+        Updater updater = new Updater(plugin, 31030, mcMMO.mcmmo, Updater.UpdateType.NO_DOWNLOAD, false);
 
         if (updater.getResult() != Updater.UpdateResult.UPDATE_AVAILABLE) {
             plugin.setUpdateAvailable(false);

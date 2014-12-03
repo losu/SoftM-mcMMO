@@ -47,7 +47,6 @@ import com.gmail.nossr50.datatypes.treasure.EnchantmentTreasure;
 import com.gmail.nossr50.datatypes.treasure.FishingTreasure;
 import com.gmail.nossr50.datatypes.treasure.Rarity;
 import com.gmail.nossr50.datatypes.treasure.ShakeTreasure;
-import com.gmail.nossr50.events.skills.McMMOPlayerSkillEvent;
 import com.gmail.nossr50.events.skills.fishing.McMMOPlayerFishingTreasureEvent;
 import com.gmail.nossr50.events.skills.fishing.McMMOPlayerShakeEvent;
 import com.gmail.nossr50.events.skills.secondaryabilities.SecondaryAbilityWeightedActivationCheckEvent;
@@ -60,7 +59,6 @@ import com.gmail.nossr50.util.EventUtils;
 import com.gmail.nossr50.util.ItemUtils;
 import com.gmail.nossr50.util.Misc;
 import com.gmail.nossr50.util.Permissions;
-import com.gmail.nossr50.util.player.UserManager;
 import com.gmail.nossr50.util.skills.CombatUtils;
 import com.gmail.nossr50.util.skills.SkillUtils;
 

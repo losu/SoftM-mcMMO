@@ -275,7 +275,7 @@ public class EntityListener implements Listener {
 
             switch (cause) {
                 case FALL:
-                    if (!SkillUtils.cooldownExpired((long) mcMMOPlayer.getTeleportATS(), Config.getInstance().getXPAfterTeleportCooldown())) {
+                    if (!SkillUtils.cooldownExpired(mcMMOPlayer.getTeleportATS(), Config.getInstance().getXPAfterTeleportCooldown())) {
                         return;
                     }
 

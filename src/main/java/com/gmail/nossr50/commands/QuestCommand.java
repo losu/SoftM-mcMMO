@@ -12,10 +12,7 @@ import org.bukkit.util.StringUtil;
 import questpack.Quest;
 import questpack.QuestManager;
 
-import com.gmail.nossr50.mcMMO;
-import com.gmail.nossr50.config.experience.ExperienceConfig;
 import com.gmail.nossr50.datatypes.player.McMMOPlayer;
-import com.gmail.nossr50.locale.LocaleLoader;
 import com.gmail.nossr50.util.Permissions;
 import com.gmail.nossr50.util.StringUtils;
 import com.gmail.nossr50.util.commands.CommandUtils;

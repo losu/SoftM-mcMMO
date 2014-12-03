@@ -25,7 +25,8 @@ public class AlchemyPotion {
         this.children = children;
     }
 
-    public String toString() {
+    @Override
+	public String toString() {
         return "AlchemyPotion{" + dataValue + ", " + name + ", Effects[" + effects.size() + "], Children[" + children.size() + "]}";
     }
 

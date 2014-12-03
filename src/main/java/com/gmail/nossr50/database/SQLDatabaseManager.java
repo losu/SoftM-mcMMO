@@ -17,6 +17,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import org.bukkit.scheduler.BukkitRunnable;
 
+import snaq.db.ConnectionPool;
+
 import com.gmail.nossr50.mcMMO;
 import com.gmail.nossr50.config.Config;
 import com.gmail.nossr50.datatypes.MobHealthbarType;
@@ -28,8 +30,6 @@ import com.gmail.nossr50.datatypes.skills.AbilityType;
 import com.gmail.nossr50.datatypes.skills.SkillType;
 import com.gmail.nossr50.runnables.database.UUIDUpdateAsyncTask;
 import com.gmail.nossr50.util.Misc;
-
-import snaq.db.ConnectionPool;
 
 public final class SQLDatabaseManager implements DatabaseManager {
     private static final String ALL_QUERY_VERSION = "taming+mining+woodcutting+repair+unarmed+herbalism+excavation+archery+swords+axes+acrobatics+fishing+alchemy";
@@ -98,7 +98,8 @@ public final class SQLDatabaseManager implements DatabaseManager {
 
     }
 
-    public void purgePowerlessUsers() {
+    @Override
+	public void purgePowerlessUsers() {
         massUpdateLock.lock();
         mcMMO.p.getLogger().info("Purging powerless users...");
 
@@ -147,7 +148,8 @@ public final class SQLDatabaseManager implements DatabaseManager {
         mcMMO.p.getLogger().info("Purged " + purged + " users from the database.");
     }
 
-    public void purgeOldUsers() {
+    @Override
+	public void purgeOldUsers() {
         massUpdateLock.lock();
         mcMMO.p.getLogger().info("Purging inactive users older than " + (PURGE_TIME / 2630000L) + " months...");
 
@@ -192,7 +194,8 @@ public final class SQLDatabaseManager implements DatabaseManager {
         mcMMO.p.getLogger().info("Purged " + purged + " users from the database.");
     }
 
-    public boolean removeUser(String playerName) {
+    @Override
+	public boolean removeUser(String playerName) {
         boolean success = false;
         Connection connection = null;
         PreparedStatement statement = null;
@@ -240,7 +243,8 @@ public final class SQLDatabaseManager implements DatabaseManager {
         return success;
     }
 
-    public boolean saveUser(PlayerProfile profile) {
+    @Override
+	public boolean saveUser(PlayerProfile profile) {
         boolean success = true;
         PreparedStatement statement = null;
         Connection connection = null;
@@ -353,7 +357,8 @@ public final class SQLDatabaseManager implements DatabaseManager {
         return success;
     }
 
-    public List<PlayerStat> readLeaderboard(SkillType skill, int pageNumber, int statsPerPage) {
+    @Override
+	public List<PlayerStat> readLeaderboard(SkillType skill, int pageNumber, int statsPerPage) {
         List<PlayerStat> stats = new ArrayList<PlayerStat>();
 
         String query = skill == null ? ALL_QUERY_VERSION : skill.name().toLowerCase();
@@ -411,7 +416,8 @@ public final class SQLDatabaseManager implements DatabaseManager {
         return stats;
     }
 
-    public Map<SkillType, Integer> readRank(String playerName) {
+    @Override
+	public Map<SkillType, Integer> readRank(String playerName) {
         Map<SkillType, Integer> skills = new HashMap<SkillType, Integer>();
 
         ResultSet resultSet = null;
@@ -526,7 +532,8 @@ public final class SQLDatabaseManager implements DatabaseManager {
         return skills;
     }
 
-    public void newUser(String playerName, UUID uuid) {
+    @Override
+	public void newUser(String playerName, UUID uuid) {
         Connection connection = null;
 
         try {
@@ -591,16 +598,19 @@ public final class SQLDatabaseManager implements DatabaseManager {
         return -1;
     }
 
-    @Deprecated
+    @Override
+	@Deprecated
     public PlayerProfile loadPlayerProfile(String playerName, boolean create) {
         return loadPlayerProfile(playerName, null, false, true);
     }
 
-    public PlayerProfile loadPlayerProfile(UUID uuid) {
+    @Override
+	public PlayerProfile loadPlayerProfile(UUID uuid) {
         return loadPlayerProfile("", uuid, false, true);
     }
 
-    public PlayerProfile loadPlayerProfile(String playerName, UUID uuid, boolean create) {
+    @Override
+	public PlayerProfile loadPlayerProfile(String playerName, UUID uuid, boolean create) {
         return loadPlayerProfile(playerName, uuid, create, true);
     }
 
@@ -710,7 +720,8 @@ public final class SQLDatabaseManager implements DatabaseManager {
         return loadPlayerProfile(playerName, uuid, create, false);
     }
 
-    public void convertUsers(DatabaseManager destination) {
+    @Override
+	public void convertUsers(DatabaseManager destination) {
         PreparedStatement statement = null;
         Connection connection = null;
         ResultSet resultSet = null;
@@ -779,7 +790,8 @@ public final class SQLDatabaseManager implements DatabaseManager {
 
     }
 
-    public boolean saveUserUUID(String userName, UUID uuid) {
+    @Override
+	public boolean saveUserUUID(String userName, UUID uuid) {
         PreparedStatement statement = null;
         Connection connection = null;
 
@@ -817,7 +829,8 @@ public final class SQLDatabaseManager implements DatabaseManager {
         }
     }
 
-    public boolean saveUserUUIDs(Map<String, UUID> fetchedUUIDs) {
+    @Override
+	public boolean saveUserUUIDs(Map<String, UUID> fetchedUUIDs) {
         PreparedStatement statement = null;
         int count = 0;
 
@@ -871,7 +884,8 @@ public final class SQLDatabaseManager implements DatabaseManager {
         }
     }
 
-    public List<String> getStoredUsers() {
+    @Override
+	public List<String> getStoredUsers() {
         ArrayList<String> users = new ArrayList<String>();
 
         Statement statement = null;
@@ -1299,7 +1313,8 @@ public final class SQLDatabaseManager implements DatabaseManager {
         mcMMO.p.getLogger().severe("VendorError: " + ex.getErrorCode());
     }
 
-    public DatabaseType getDatabaseType() {
+    @Override
+	public DatabaseType getDatabaseType() {
         return DatabaseType.SQL;
     }
 
@@ -1422,7 +1437,8 @@ public final class SQLDatabaseManager implements DatabaseManager {
     }
 
     private class GetUUIDUpdatesRequired extends BukkitRunnable {
-        public void run() {
+        @Override
+		public void run() {
             massUpdateLock.lock();
             List<String> names = new ArrayList<String>();
             Connection connection = null;

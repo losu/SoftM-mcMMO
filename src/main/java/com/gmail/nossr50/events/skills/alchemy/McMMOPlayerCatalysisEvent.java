@@ -17,11 +17,13 @@ public class McMMOPlayerCatalysisEvent extends McMMOPlayerSkillEvent implements 
         cancelled = false;
     }
 
-    public boolean isCancelled() {
+    @Override
+	public boolean isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean newValue) {
+    @Override
+	public void setCancelled(boolean newValue) {
         this.cancelled = newValue;
     }
 

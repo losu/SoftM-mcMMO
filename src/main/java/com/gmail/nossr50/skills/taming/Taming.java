@@ -3,8 +3,6 @@ package com.gmail.nossr50.skills.taming;
 
 
 import org.bukkit.EntityEffect;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.AnimalTamer;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;

@@ -16,7 +16,6 @@ import com.gmail.nossr50.datatypes.skills.ToolType;
 import com.gmail.nossr50.locale.LocaleLoader;
 import com.gmail.nossr50.runnables.skills.BleedTimerTask;
 import com.gmail.nossr50.skills.SkillManager;
-import com.gmail.nossr50.skills.axes.Axes;
 import com.gmail.nossr50.util.Permissions;
 import com.gmail.nossr50.util.player.UserManager;
 import com.gmail.nossr50.util.skills.CombatUtils;

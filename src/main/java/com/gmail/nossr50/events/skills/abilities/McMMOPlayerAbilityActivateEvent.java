@@ -13,11 +13,13 @@ public class McMMOPlayerAbilityActivateEvent extends McMMOPlayerAbilityEvent imp
         cancelled = false;
     }
 
-    public boolean isCancelled() {
+    @Override
+	public boolean isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean value) {
+    @Override
+	public void setCancelled(boolean value) {
         this.cancelled = value;
     }
 }

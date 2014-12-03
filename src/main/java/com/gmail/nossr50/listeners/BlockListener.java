@@ -153,7 +153,7 @@ public class BlockListener implements Listener {
         BlockState blockState = event.getBlock().getState();
         Location location = blockState.getLocation();
 
-        if (plugin.griefProtectBlock.contains(event.getBlock().getLocation())) { // ADAMA CHANGE 2X
+        if (mcMMO.griefProtectBlock.contains(event.getBlock().getLocation())) { // ADAMA CHANGE 2X
             Player player = event.getPlayer();
             McMMOPlayer mcMMOPlayer = UserManager.getPlayer(player);
            
@@ -191,6 +191,7 @@ public class BlockListener implements Listener {
 		 
 			int task = plugin.getServer().getScheduler()
 					.scheduleSyncDelayedTask(plugin, new Runnable() {
+						@Override
 						public void run() {
 							player.getWorld()
 									.getBlockAt(loc)
