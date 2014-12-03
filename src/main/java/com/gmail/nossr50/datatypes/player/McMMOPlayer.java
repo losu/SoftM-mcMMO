@@ -87,6 +87,10 @@ public class McMMOPlayer {
 	private ArrayList<Location> warpLocations = new ArrayList<Location>();
 	private ArrayList<String> warpNames = new ArrayList<String>();
 
+	public ArrayList<String> getWarpNames() {
+		return warpNames;
+	}
+
 	private final Map<AbilityType, Boolean> abilityMode = new HashMap<AbilityType, Boolean>();
 	private final Map<AbilityType, Boolean> abilityInformed = new HashMap<AbilityType, Boolean>();
 
