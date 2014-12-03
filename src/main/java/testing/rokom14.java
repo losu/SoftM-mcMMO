@@ -147,7 +147,7 @@ public class rokom14 {
 		s.type("t");
 		s.wait((double) 2.0);
 		s.paste("/quest");
-		
+		assertTrue("", s.exists("quest0.png").getImage() != null);		
 
 		s.wait((double) 2.0);
 		s.type(Key.ENTER);
