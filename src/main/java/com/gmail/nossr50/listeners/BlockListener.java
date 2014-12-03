@@ -185,20 +185,18 @@ public class BlockListener implements Listener {
   //when the last log is cut, then it should replant a sapling (a seed) at the location.
 		final Block block = event.getBlock();
 		final byte id = block.getData();
-		if (block.getType() == Material.LOG
-				&& block.getRelative(BlockFace.DOWN).getType() == Material.DIRT) {
+		if (block.getType() == Material.LOG && block.getRelative(BlockFace.DOWN).getType() == Material.DIRT) {
 			final Location loc = block.getLocation();
 		 
-			int task = plugin.getServer().getScheduler()
-					.scheduleSyncDelayedTask(plugin, new Runnable() {
+			int task = plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
 						@Override
 						public void run() {
-							player.getWorld()
-									.getBlockAt(loc)
-									.setTypeIdAndData(Material.SAPLING.getId(),
-											id, true);
+							player.getWorld().getBlockAt(loc).setTypeIdAndData(Material.SAPLING.getId(),id, true);
+							
 						}
 					}, 10L);
+			mcMMOPlayer.getPlayer().sendMessage("The sapling has been successfully replanted");
+			
 		}
         
         

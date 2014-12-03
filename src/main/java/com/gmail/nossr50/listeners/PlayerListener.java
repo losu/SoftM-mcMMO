@@ -548,12 +548,10 @@ public class PlayerListener implements Listener {
                     if (!mcMMO.saplingsList.contains(block.getLocation())) {
                      mcMMO.saplingsList.add(block.getLocation());
 
-                     mcMMOPlayer.getPlayer().sendMessage(
-                       "Sapling ready to grow");
+                     mcMMOPlayer.getPlayer().sendMessage("Sapling ready to grow");
                      event.setCancelled(true);
                     } else {
-                     mcMMOPlayer.getPlayer().sendMessage(
-                       "Sapling already ready to grow");
+                     mcMMOPlayer.getPlayer().sendMessage("Sapling already ready to grow");
                      event.setCancelled(true);
                     }
                   
