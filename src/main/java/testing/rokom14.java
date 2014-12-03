@@ -57,7 +57,7 @@ public class rokom14 {
 		// /quest COMMAND - SHOWS THE QUESTS AVALIBLE
 		s.type("t");
 		s.wait((double) 2.0);
-		s.type("/quest");
+		s.paste("/quest");
 				
 		assertTrue("", s.exists("questcommand.png").getImage() != null);
 				
@@ -71,7 +71,7 @@ public class rokom14 {
 		s.wait((double) 2.0);
 		s.type("t"); 
 		s.wait((double) 2.0);
-		s.type("/quest 0"); 
+		s.paste("/quest 0"); 
 		
 		assertTrue("", s.exists("quest0.png").getImage() != null);
 				
@@ -86,35 +86,38 @@ public class rokom14 {
 		//SHOW LIST OF QUESTS AGAIN (TO SHOW THAT QUEST 0 IS IN PROGRESS)
 		s.type("t");
 		s.wait((double) 2.0);
-		s.type("/quest");
-				
-		assertTrue("", s.exists("questlist0progress.png").getImage() != null);
+		s.paste("/quest");
+		assertTrue("", s.exists("questcommand.png").getImage() != null);		
+
 		
 		s.wait((double) 2.0);
 		s.type(Key.ENTER);
 		s.wait((double) 2.0);
+		
+		assertTrue("", s.exists("questlist0progress.png").getImage() != null);
 		
 		//TRY TO COMPLETE QUEST 0 BUT WE DONT HAVE ALL ITEMS
 		s.type("t");
 		s.wait((double) 2.0);
-		s.type("/quest 0");
-		
-		assertTrue("", s.exists("quest0not.png").getImage() != null);	
+		s.paste("/quest 0");
+		assertTrue("", s.exists("quest0.png").getImage() != null);
 		s.wait((double) 2.0);
 		s.type(Key.ENTER);
+		assertTrue("", s.exists("quest0not.png").getImage() != null);	
+		
 		s.wait((double) 2.0);
 		
 		//GET THE REQUIRED ITEMS BY COMANDS
 		s.type("t");
 		s.wait((double) 2.0);
-		s.type("/gamemode 1");
+		s.paste("/gamemode 1");
 		s.wait((double) 2.0);
 		s.type(Key.ENTER);
 		s.wait((double) 2.0);
 		
 		s.type("t");
 		s.wait((double) 2.0);
-		s.type("/give rokic1337 dirt 15");
+		s.paste("/give rokic1337 dirt 15");
 		
 		
 		s.wait((double) 2.0);
@@ -123,25 +126,35 @@ public class rokom14 {
 		s.type(Key.ENTER);
 		s.wait((double) 2.0);
 		
+		assertTrue("", s.exists("dirt.png").getImage() != null);
+		
 		//NOW WE GOT THE ITEMS, TURN IN THE QUEST, WE WILL GET IRON SPADE AS REWARD
 		s.type("t");
 		s.wait((double) 2.0);
-		s.type("/quest 0");
-		
-		assertTrue("", s.exists("quest0comp.png").getImage() != null);
+		s.paste("/quest 0");
+		assertTrue("", s.exists("quest0.png").getImage() != null);
 		
 		s.wait((double) 2.0);
 		s.type(Key.ENTER);
+
+		assertTrue("", s.exists("dirtleft.png").getImage() != null);
+		assertTrue("", s.exists("spade.png").getImage() != null);		
+		assertTrue("", s.exists("quest0comp.png").getImage() != null);
+		
 		s.wait((double) 2.0);
 		
 		//SHOWS QUEST LIST AGAIN TO SHOW QUEST 0 IS NOW COMPLETED
 		s.type("t");
 		s.wait((double) 2.0);
-		s.type("/quest");
+		s.paste("/quest");
 		
-		assertTrue("", s.exists("questlist0completed.png").getImage() != null);
+
 		s.wait((double) 2.0);
 		s.type(Key.ENTER);
+		
+		assertTrue("", s.exists("questlist0completed.png").getImage() != null);
+
+		
 		s.wait((double) 5.0);
 				
 		
