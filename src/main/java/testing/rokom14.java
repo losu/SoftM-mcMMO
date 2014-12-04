@@ -23,36 +23,30 @@ public class rokom14 {
 
 	public static java.lang.String keyboardUS;
 	
-	// background should be black for testing
-	@Before
-	public void beforeFirstTest() {
-		Screen s = new Screen();
-		ImagePath.setBundlePath("C:/Users/Rok Komatar/Desktop/sikuliUnitesting/join");
 
-		try {
-			s.doubleClick("start.png");
-			
-			s.doubleClick("mc.png");
-			
-			s.wait("play.png",(double) 20.0);
-			s.click("play.png");
-			s.wait("mp.png",(double) 20.0);
-			s.click("mp.png");
-			s.wait("server.png",(double) 20.0);
-			s.doubleClick("server.png");
-			s.doubleClick("join.png");
-
-		} catch (FindFailed e) {
-			e.printStackTrace();
-		}
-
-	}
 
 	@Test
 	public void sikuliTest() throws FindFailed {
 		Screen s = new Screen();
-		ImagePath.setBundlePath("C:/Users/Rok Komatar/Desktop/sikuliUnitesting/quest");
+		//ImagePath.setBundlePath("C:/Users/Rok Komatar/Desktop/sikuliUnitesting/quest");
+		ImagePath.setBundlePath("C:/Users/david/git/SoftM-mcMMO/src/main/resources");
 		
+		//opening a application
+		s.doubleClick("minecraft.png");
+		s.wait((double) 7.0);
+		s.paste("rokic1337");
+		s.wait((double) 2.0);
+		s.type(Key.ENTER);
+		s.wait((double) 7.0);
+		s.click("play1.png");
+
+		s.wait((double) 7.0);
+		s.click("Multiplayer.png");
+		s.wait((double) 7.0);
+		s.doubleClick("serverDavid.png");
+
+		s.wait((double) 7.0);
+
 
 		// /quest COMMAND - SHOWS THE QUESTS AVALIBLE
 		s.type("t");
@@ -103,6 +97,7 @@ public class rokom14 {
 		assertTrue("", s.exists("quest0.png").getImage() != null);
 		s.wait((double) 2.0);
 		s.type(Key.ENTER);
+		s.wait((double) 0.5);
 		assertTrue("", s.exists("quest0not.png").getImage() != null);	
 		
 		s.wait((double) 2.0);
@@ -120,18 +115,19 @@ public class rokom14 {
 		s.paste("/give rokic1337 dirt 15");
 		
 		
-		s.wait((double) 2.0);
+		//s.wait((double) 2.0);
 		assertTrue("", s.exists("givedirt.png").getImage() != null);
-		
+		s.wait((double) 1.0);
 		s.type(Key.ENTER);
-		s.wait((double) 2.0);
+		//s.wait((double) 2.0);
 		
 		assertTrue("", s.exists("dirt.png").getImage() != null);
-		
+		s.wait((double)2.0);
 		//NOW WE GOT THE ITEMS, TURN IN THE QUEST, WE WILL GET IRON SPADE AS REWARD
 		s.type("t");
 		s.wait((double) 2.0);
 		s.paste("/quest 0");
+		s.wait((double) 1.0);
 		assertTrue("", s.exists("quest0.png").getImage() != null);
 		
 		s.wait((double) 2.0);
