@@ -17,44 +17,43 @@ import com.gmail.nossr50.datatypes.player.McMMOPlayer;
 import org.junit.Test;
 
 public class figus12testcase {
-
-//	@Before
-//	// this is what you do before the test. All the things you run, before the actual game is played
-//	public void beforeFirstTest(){
-//		Screen s = new Screen();
-//		ImagePath.setBundlePath("src/main/resources");
-//		
-//		try{
-//			//you must only have Eclipse open and when you minimize, you get on the desktop
-//				s.click("minimize.png");
-//				s.wait((double) 2.0);
-//				s.doubleClick("runthis.png");
-//				s.wait((double) 11.0);
-//				s.doubleClick("minecraft.png");
-//				s.wait((double) 8.0);
-//				s.type("filip");
-//				s.wait((double) 3.0);
-//				s.click("play2.png");
-//				s.wait((double) 4.0);
-//				s.click("play1.png");
-//				s.wait((double) 8.0);
-//				s.click("multiplayer.png");
-//				s.wait((double) 3.0);
-//				s.click("direct connect.png");
-//				s.wait((double) 2.0);
-//				s.click("type here");
-//				s.wait((double) 2.0);
-//				s.type("127.0.0.1");
-//				s.wait((double) 3.0);
-//				s.click("join server.png");
-//				s.wait((double) 4.0);
-//			
-//				
-//				}catch(FindFailed e){
-//					e.printStackTrace();
-//		
-//				}
-//	}
+	@Before
+	// this is what you do before the test. All the things you run, before the actual game is played
+	public void beforeFirstTest(){
+		Screen s = new Screen();
+		ImagePath.setBundlePath("src/main/resources");
+		
+		try{
+			//you must only have Eclipse open and when you minimize, you get on the desktop
+				s.click("minimize.png");
+				s.wait((double) 2.0);
+				s.doubleClick("runthis.png");
+				s.wait((double) 11.0);
+				s.doubleClick("minecraft.png");
+				s.wait((double) 6.0);
+				s.type("filip");
+				s.wait((double) 3.0);
+				s.click("play2.png");
+				s.wait((double) 4.0);
+				s.click("play1.png");
+				s.wait((double) 8.0);
+				s.click("Multiplayer.png");
+				s.wait((double) 3.0);
+				s.click("direct connect.png");
+				s.wait((double) 2.0);
+				s.click("type here");
+				s.wait((double) 2.0);
+				s.type("127.0.0.1");
+				s.wait((double) 3.0);
+				s.click("join server.png");
+				s.wait((double) 4.0);
+			
+				
+				}catch(FindFailed e){
+					e.printStackTrace();
+		
+				}
+	}
 	
 		
 		@Test
@@ -69,6 +68,7 @@ public class figus12testcase {
 		s.paste("/time set 3500");
 		s.wait((double) 3.0);
 		s.type(Key.ENTER);
+		s.wait((double)2.0);
 		s.type("t");
 		s.wait((double) 3.0);
 		s.paste("/gamemode 1");
@@ -96,11 +96,11 @@ public class figus12testcase {
 		s.type(Key.ENTER);
 		s.wait((double) 4.0);
 		s.mouseDown(Button.RIGHT);
+		s.wait((double) 2.0);
 		s.mouseUp(Button.RIGHT);
-		s.wait((double)0.5);
-
 		s.wait((double) 2.0);
 		s.mouseDown(Button.RIGHT);
+		s.wait((double) 2.0);
 		s.mouseUp(Button.RIGHT);
 		s.wait((double) 4.0);
 		s.wait((double)0.5);
@@ -145,15 +145,21 @@ public class figus12testcase {
 		s.type(Key.ESC);
 		s.wait((double) 3.0);
 		s.type("1");
+		
 		s.wait((double) 3.0);
 		s.type("t");
-		s.paste("/gamemode 0");
 		s.wait((double) 2.0);
+		s.paste("/gamemode 0");
+		s.wait((double) 3.0);
+		s.type(Key.ENTER);
+		s.wait((double) 3.0);
 		s.mouseDown(Button.RIGHT);
+		s.wait((double) 2.0);
 		s.mouseUp(Button.RIGHT);
 		s.wait((double) 2.0);
 		s.mouseDown(Button.LEFT);
-		s.wait((double) 3.0);
+		
+		s.wait((double) 7.0);
 		s.mouseUp(Button.LEFT);
 		assertTrue("", s.exists("sapling has been succesfully planted.png").getImage() != null);	
 
