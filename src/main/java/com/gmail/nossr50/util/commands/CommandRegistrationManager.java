@@ -174,7 +174,7 @@ public final class CommandRegistrationManager {
     }
     private static void registerQuestCommand() {
         PluginCommand command = mcMMO.p.getCommand("quest");
-        command.setDescription("fuck you");
+        command.setDescription("questing plugin");
         command.setPermission("mcmmo.commands.quest;mcmmo.commands.quest.others");
         command.setPermissionMessage(permissionsMessage);
         command.setUsage(LocaleLoader.getString("Commands.Usage.1", "quest", "[" + LocaleLoader.getString("Commands.Usage.Player") + "]"));
